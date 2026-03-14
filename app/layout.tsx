@@ -105,28 +105,21 @@ export default function RootLayout({
               </div>
               <div className="flex space-x-4">
                 <a
-                  href="#"
-                  className="text-sm text-night-300 hover:text-accent-gold transition-colors"
-                >
-                  Contact
-                </a>
-                <a
-                  href="#"
+                  href="https://discord.gg/CDBrgjd4cH"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-night-300 hover:text-accent-gold transition-colors"
                 >
                   Discord
-                </a>
-                <a
-                  href="#"
-                  className="text-sm text-night-300 hover:text-accent-gold transition-colors"
-                >
-                  Guide de guilde
                 </a>
               </div>
             </div>
             <div className="mt-4 text-center text-xs text-night-400">
               World of Warcraft et Blizzard Entertainment sont des marques
               déposées de Blizzard Entertainment, Inc.
+            </div>
+            <div className="mt-2 text-center text-xs text-night-300">
+              © 2026 Raid Always More - Tous droits réservés
             </div>
             <div className="mt-2 text-center text-xs text-night-300">
               Made with love by Loxxar ❤️

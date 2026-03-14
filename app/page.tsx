@@ -585,37 +585,6 @@ export default function HomePage() {
               </div>
             </form>
           )}
-
-          {/* Informations complémentaires */}
-          {!submitted && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mt-8 pt-6 border-t border-void/30"
-            >
-              <div className="flex flex-col md:flex-row justify-between items-center text-sm text-night-300">
-                <div className="mb-4 md:mb-0">
-                  <p className="flex items-center">
-                    <Zap className="w-4 h-4 mr-2 text-accent-gold" />
-                    Temps de réponse: 2-5 jours
-                  </p>
-                </div>
-                <div className="mb-4 md:mb-0">
-                  <p className="flex items-center">
-                    <Users className="w-4 h-4 mr-2 text-primary" />
-                    Contact: Discord @recrutement
-                  </p>
-                </div>
-                <div>
-                  <p className="flex items-center">
-                    <Shield className="w-4 h-4 mr-2 text-success" />
-                    Données sécurisées & confidentielles
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
         </motion.div>
 
         {/* Section Informations Guilde */}
@@ -631,8 +600,7 @@ export default function HomePage() {
               Objectifs
             </h4>
             <p className="text-night-200">
-              Progression mythique, ambiance sérieuse mais détendue, entraide
-              entre membres.
+              Ambiance sérieuse mais détendue et entraide entre membres.
             </p>
           </div>
 
@@ -644,7 +612,7 @@ export default function HomePage() {
               Planning
             </h4>
             <p className="text-night-200">
-              3 soirs par semaine, sessions de 2h, focus sur l'efficacité et la
+              2 soirs par semaine, sessions de 2h, focus sur l'efficacité et la
               progression.
             </p>
           </div>
@@ -657,7 +625,7 @@ export default function HomePage() {
               Requis
             </h4>
             <p className="text-night-200">
-              iLvl 475+, expérience raid, attitude positive, engagement sur la
+              iLvl 240+, expérience raid, attitude positive, engagement sur la
               durée.
             </p>
           </div>
