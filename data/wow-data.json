@@ -1,0 +1,56 @@
+{
+  "classes": [
+    {
+      "name": "Chasseur de démons",
+      "specializations": ["Dévastation", "Vengeance"]
+    },
+    {
+      "name": "Chevalier de la mort",
+      "specializations": ["Sang", "Givre", "Impie"]
+    },
+    {
+      "name": "Chaman",
+      "specializations": ["Élémentaire", "Amélioration", "Restauration"]
+    },
+    {
+      "name": "Chasseur",
+      "specializations": ["Maîtrise des bêtes", "Précision", "Survie"]
+    },
+    {
+      "name": "Démoniste",
+      "specializations": ["Affliction", "Démonologie", "Destruction"]
+    },
+    {
+      "name": "Druide",
+      "specializations": ["Équilibre", "Farouche", "Gardien", "Restauration"]
+    },
+    {
+      "name": "Évocateur",
+      "specializations": ["Dévastation", "Préservation", "Augmentation"]
+    },
+    {
+      "name": "Guerrier",
+      "specializations": ["Armes", "Fureur", "Protection"]
+    },
+    {
+      "name": "Mage",
+      "specializations": ["Arcane", "Feu", "Givre"]
+    },
+    {
+      "name": "Moine",
+      "specializations": ["Maître brasseur", "Tisse-brume", "Marche-vent"]
+    },
+    {
+      "name": "Paladin",
+      "specializations": ["Sacré", "Protection", "Vindicte"]
+    },
+    {
+      "name": "Prêtre",
+      "specializations": ["Discipline", "Sacré", "Ombre"]
+    },
+    {
+      "name": "Voleur",
+      "specializations": ["Assassinat", "Hors-la-loi", "Finesse"]
+    }
+  ]
+}

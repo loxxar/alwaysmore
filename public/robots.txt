@@ -1,0 +1,35 @@
+# Fichier robots.txt pour Raid Always More
+# Application de recrutement de guilde WoW
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /_next/image/
+
+# Spécifique aux moteurs de recherche
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 2
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 2
+
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 3
+
+# Sitemap (à générer en production)
+# Sitemap: https://raidalwaysmore.com/sitemap.xml
+# Sitemap: https://raidalwaysmore.com/sitemap-0.xml
+
+# Note: L'application utilise Next.js avec App Router
+# Les pages dynamiques sont générées à la volée

@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+.pnp.cjs
+.yarn/install-state.gz
+
+# Build outputs
+.next/
+out/
+dist/
+
+# Environment variables
+.env*.local
+.env
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul, cypress, and jest
+coverage/
+.nyc_output/
+
+# Build tool cache
+.cache/
+.turbo/
+
+# Misc
+.DS_Store
+*.pem
+*.tgz
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local development
+.vercel
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Testing
+/junit.xml
+
+# TypeScript
+*.tsbuildinfo
