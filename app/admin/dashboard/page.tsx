@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { AdminAuth } from "../../../lib/admin-config";
 import {
   Users,
   Sword,
@@ -177,8 +178,7 @@ export default function AdminDashboardPage() {
 
     const adminToken = getCookie("admin_token");
     const adminUser = getCookie("admin_user");
-    const isAuthenticated =
-      adminToken === "raid-always-more-admin-secret-2024" && adminUser;
+    const isAuthenticated = AdminAuth.isAuthenticated(adminToken, adminUser);
 
     if (!isAuthenticated) {
       router.push("/admin/login");

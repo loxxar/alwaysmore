@@ -1,9 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { ADMIN_CONFIG, AdminAuth } from "./lib/admin-config";
 
 // Configuration
-const ADMIN_SECRET = "raid-always-more-admin-secret-2024";
-const ADMIN_TOKEN_COOKIE = "admin_token";
-const ADMIN_USER_COOKIE = "admin_user";
+const ADMIN_SECRET = ADMIN_CONFIG.SECRET;
+const ADMIN_TOKEN_COOKIE = ADMIN_CONFIG.COOKIE_NAMES.TOKEN;
+const ADMIN_USER_COOKIE = ADMIN_CONFIG.COOKIE_NAMES.USER;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -11,7 +12,7 @@ export function middleware(request: NextRequest) {
   // Vérifier si l'utilisateur est authentifié
   const adminToken = request.cookies.get(ADMIN_TOKEN_COOKIE)?.value;
   const adminUser = request.cookies.get(ADMIN_USER_COOKIE)?.value;
-  const isAuthenticated = adminToken === ADMIN_SECRET && adminUser;
+  const isAuthenticated = AdminAuth.isAuthenticated(adminToken, adminUser);
 
   // Routes d'administration
   const isAdminRoute = pathname.startsWith("/admin");
