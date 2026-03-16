@@ -217,10 +217,11 @@ export default function HomePage() {
             Rejoignez l'Élite
           </h2>
           <p className="text-night-200 text-lg max-w-2xl mx-auto">
-            Postulez pour rejoindre Raid Always More, une guilde dédiée au
-            contenu endgame dans l'univers du Vide. Nous recherchons des joueurs
-            motivés pour conquérir les donjons mythiques+ et les raids de The
-            War Within.
+            Postulez pour rejoindre le raid Midnight. Les places seront limitées
+            et une sélection sera faite à l'entrée, car nous ne pourrons
+            malheureusement pas accueillir tout le monde. Merci de prendre le
+            temps de répondre sérieusement à toutes les questions du formulaire :
+            les candidatures incomplètes ne pourront pas être étudiées.
           </p>
         </motion.div>
 
