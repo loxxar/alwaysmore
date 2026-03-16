@@ -204,19 +204,6 @@ export default function AdminLoginPage() {
                 </>
               )}
             </button>
-
-            {/* Demo Credentials */}
-            <div className="mt-6 pt-6 border-t border-void/30">
-              <p className="text-center text-xs text-night-400">
-                Pour la démonstration :{" "}
-                <span className="text-accent-silver">
-                  Utilisez n'importe quels identifiants
-                </span>
-              </p>
-              <p className="text-center text-xs text-night-400 mt-1">
-                En production, connectez-vous avec vos identifiants admin.
-              </p>
-            </div>
           </form>
         </motion.div>
 
