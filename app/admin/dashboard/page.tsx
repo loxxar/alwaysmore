@@ -11,7 +11,6 @@ import {
   Search,
   Filter,
   Eye,
-  Trash2,
   LogOut,
   Home,
   User,
@@ -241,24 +240,6 @@ export default function AdminDashboardPage() {
         setSelectedApp({ ...selectedApp, status: newStatus });
       }
     })();
-  };
-
-  const handleDelete = (id: number) => {
-    if (confirm("Êtes-vous sûr de vouloir supprimer cette candidature ?")) {
-      void (async () => {
-        const response = await fetch(`/api/applications/${id}`, {
-          method: "DELETE",
-        });
-        if (!response.ok) {
-          return;
-        }
-        setApplications((prev) => prev.filter((app) => app.id !== id));
-        if (selectedApp?.id === id) {
-          setShowDetailsModal(false);
-          setSelectedApp(null);
-        }
-      })();
-    }
   };
 
   const getStatusColor = (status: string) => {
@@ -613,13 +594,6 @@ export default function AdminDashboardPage() {
                           title="Voir les détails"
                         >
                           <Eye className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(app.id)}
-                          className="p-2 text-night-300 hover:text-destructive transition-colors"
-                          title="Supprimer"
-                        >
-                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </td>
