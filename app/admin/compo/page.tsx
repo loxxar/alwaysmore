@@ -50,8 +50,6 @@ const NUM_GROUPS = 8;
 
 type Groups = Record<number, (GuildApplication | null)[]>;
 
-const STORAGE_KEY = "raid_compo";
-
 export default function CompoPage() {
   const router = useRouter();
   const [applications, setApplications] = useState<GuildApplication[]>([]);
@@ -64,23 +62,33 @@ export default function CompoPage() {
   });
   const [draggedId, setDraggedId] = useState<number | null>(null);
   const [dragSource, setDragSource] = useState<{ group: number; slot: number } | "pool" | null>(null);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     fetch("/api/applications")
       .then((r) => r.json())
       .then((data) => setApplications(data.applications || []));
 
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        setGroups(JSON.parse(saved));
-      } catch {}
-    }
+    fetch("/api/admin/compo")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.compo) setGroups(data.compo);
+      })
+      .catch(() => {});
   }, []);
 
-  const saveGroups = (updated: Groups) => {
+  const saveGroups = async (updated: Groups) => {
     setGroups(updated);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    setSaving(true);
+    try {
+      await fetch("/api/admin/compo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ groups: updated }),
+      });
+    } finally {
+      setSaving(false);
+    }
   };
 
   const assignedIds = new Set(
@@ -136,12 +144,12 @@ export default function CompoPage() {
     setDragSource(null);
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     const empty: Groups = {};
     for (let i = 1; i <= NUM_GROUPS; i++) {
       empty[i] = Array(SLOTS_PER_GROUP).fill(null);
     }
-    saveGroups(empty);
+    await saveGroups(empty);
   };
 
   const handleLogout = async () => {
@@ -173,6 +181,9 @@ export default function CompoPage() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
+            {saving && (
+              <span className="text-xs text-night-400 italic">Sauvegarde...</span>
+            )}
             <button
               onClick={handleReset}
               className="flex items-center text-sm text-night-300 hover:text-accent-gold transition-colors"
