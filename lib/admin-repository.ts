@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { db, type DbRow } from "./db";
 
 interface AdminUserRow extends DbRow {

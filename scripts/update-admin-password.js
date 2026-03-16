@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const mysql = require('mysql2/promise');
 const readline = require('readline');
 

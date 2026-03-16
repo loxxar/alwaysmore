@@ -93,7 +93,7 @@ const nextConfig = {
   },
 
   // Modules natifs à exclure du bundling (chargés depuis node_modules au runtime)
-  serverExternalPackages: ["mysql2", "argon2", "bcrypt"],
+  serverExternalPackages: ["mysql2", "argon2"],
 
   // Optimisations de compilation
   compiler: {
