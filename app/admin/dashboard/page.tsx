@@ -158,7 +158,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
   },
 ];
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 25;
 
 export default function AdminDashboardPage() {
   const router = useRouter();
