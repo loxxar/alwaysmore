@@ -19,7 +19,7 @@
 - Un forfait d'hébergement avec support Node.js (VPS ou hébergement mutualisé avec Node.js)
 
 ### Projet GitHub
-- Dépôt GitHub public ou privé : `https://github.com/loxxar/alwaysmore`
+- Dépôt GitHub public ou privé : `https://github.com/<your-org-or-user>/<your-repo>`
 - Accès en écriture pour les déploiements automatiques
 
 ### Configuration Technique Requise
@@ -83,7 +83,7 @@ git push origin main
 ### Étape 3 : Connexion GitHub
 1. **Cliquez sur "Connecter GitHub"**
 2. Autorisez Hostinger à accéder à votre compte GitHub
-3. Sélectionnez le dépôt : `loxxar/alwaysmore`
+3. Sélectionnez le dépôt : `<your-org-or-user>/<your-repo>`
 4. Choisissez la branche : `main`
 5. Activez **"Déploiement automatique"** pour les pushes
 
@@ -107,7 +107,7 @@ Dans le panneau Hostinger > Variables d'environnement, ajoutez :
 NODE_ENV=production
 NEXT_PUBLIC_APP_NAME="Raid Always More"
 NEXT_PUBLIC_APP_DESCRIPTION="Formulaire de recrutement pour la guilde WoW Raid Always More"
-NEXT_PUBLIC_APP_URL=https://alwaysmore.linkz.tn
+NEXT_PUBLIC_APP_URL=https://example.com
 NEXT_PUBLIC_ADMIN_ENABLED=true
 
 # ====================
@@ -140,7 +140,7 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=votre-email@gmail.com
 SMTP_PASSWORD=votre-mot-de-passe-app
-NOTIFICATION_EMAIL=admin@alwaysmore.linkz.tn
+NOTIFICATION_EMAIL=admin@example.com
 ```
 
 ---
@@ -164,10 +164,10 @@ Surveillez ces messages dans les logs :
 ```
 
 ### Vérification après Déploiement
-1. **Accédez à votre URL** : `https://alwaysmore.linkz.tn`
+1. **Accédez à votre URL** : `https://example.com`
 2. **Testez le formulaire** : Soumettez une candidature test
-3. **Testez l'admin** : `https://alwaysmore.linkz.tn/admin/login`
-4. **Vérifiez le dashboard** : `https://alwaysmore.linkz.tn/admin/dashboard`
+3. **Testez l'admin** : `https://example.com/admin/login`
+4. **Vérifiez le dashboard** : `https://example.com/admin/dashboard`
 
 ---
 
@@ -290,9 +290,9 @@ git push origin main
 - **Chat en direct** : Disponible 24/7
 
 ### Support Technique de l'Application
-- **GitHub Issues** : https://github.com/loxxar/alwaysmore/issues
+- **GitHub Issues** : (optionnel) Activez-les dans votre propre dépôt
 - **Documentation** : Consulter le fichier `README.md`
-- **Contact développeur** : Via le dépôt GitHub
+- **Contact développeur** : Non public
 
 ---
 
@@ -316,8 +316,8 @@ git push origin main
 ## 🎉 Félicitations !
 Votre application "Raid Always More" est maintenant déployée sur Hostinger. Les joueurs peuvent soumettre leurs candidatures et vous pouvez les gérer via le tableau de bord d'administration.
 
-**URL d'accès** : `https://alwaysmore.linkz.tn`  
-**Admin** : `https://alwaysmore.linkz.tn/admin/login`
+**URL d'accès** : `https://example.com`  
+**Admin** : `https://example.com/admin/login`
 
 Pour toute question ou problème, consultez la section [Résolution de Problèmes](#résolution-de-problèmes) ou contactez le support.
 

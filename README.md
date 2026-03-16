@@ -88,7 +88,7 @@ BCRYPT_SALT_ROUNDS=12
 
 # Application
 NEXT_PUBLIC_APP_NAME="Raid Always More"
-NEXT_PUBLIC_APP_URL=https://alwaysmore.linkz.tn
+NEXT_PUBLIC_APP_URL=https://example.com
 NEXT_PUBLIC_ADMIN_ENABLED=true
 
 # Base de données (optionnel)
@@ -333,7 +333,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 📞 Support
 
-Pour le support, ouvrez une issue sur GitHub ou contactez l'équipe de développement.
+Ce projet est personnel et fourni en l'état. Aucun canal de support n'est assuré.
 
 ---
 

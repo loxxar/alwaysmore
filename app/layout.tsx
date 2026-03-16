@@ -104,14 +104,9 @@ export default function RootLayout({
                 réservés
               </div>
               <div className="flex space-x-4">
-                <a
-                  href="https://discord.gg/CDBrgjd4cH"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-night-300 hover:text-accent-gold transition-colors"
-                >
-                  Discord
-                </a>
+                <span className="text-sm text-night-300">
+                  Projet personnel
+                </span>
               </div>
             </div>
             <div className="mt-4 text-center text-xs text-night-400">
@@ -122,7 +117,7 @@ export default function RootLayout({
               © 2026 Raid Always More - Tous droits réservés
             </div>
             <div className="mt-2 text-center text-xs text-night-300">
-              Made with love by Loxxar ❤️
+              Projet personnel - diffusion publique sans contact direct
             </div>
           </div>
         </footer>
