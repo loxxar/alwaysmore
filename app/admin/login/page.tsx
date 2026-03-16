@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Lock, User, Eye, EyeOff, Shield, AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { AdminAuth, ADMIN_CONFIG } from "../../../lib/admin-config";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -34,38 +33,25 @@ export default function AdminLoginPage() {
     }
 
     setLoading(true);
+    try {
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    // Simulate API call with delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        setError(data?.error || "Identifiants incorrects");
+        return;
+      }
 
-    // For demo purposes, accept any non-empty credentials
-    // In a real app, you would validate against your database
-    if (formData.username && formData.password) {
-      // Store auth token in cookies using centralized config
-      const cookieSettings = AdminAuth.setAuthCookies(formData.username);
-
-      // Build cookie strings using centralized utility
-      const tokenCookie = AdminAuth.buildCookieString(
-        ADMIN_CONFIG.COOKIE_NAMES.TOKEN,
-        cookieSettings[ADMIN_CONFIG.COOKIE_NAMES.TOKEN] as string,
-        cookieSettings,
-      );
-      const userCookie = AdminAuth.buildCookieString(
-        ADMIN_CONFIG.COOKIE_NAMES.USER,
-        cookieSettings[ADMIN_CONFIG.COOKIE_NAMES.USER] as string,
-        cookieSettings,
-      );
-
-      document.cookie = tokenCookie;
-      document.cookie = userCookie;
-
-      // Redirect to admin dashboard
       router.push("/admin/dashboard");
-    } else {
-      setError("Identifiants incorrects");
+    } catch {
+      setError("Erreur de connexion");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   const containerVariants = {

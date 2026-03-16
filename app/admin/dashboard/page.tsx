@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { AdminAuth } from "../../../lib/admin-config";
 import {
   Users,
   Sword,
@@ -43,7 +42,7 @@ interface GuildApplication {
   expRaid: string;
   expTww: string;
   ilvl: number;
-  raidObjective: "normal" | "heroic" | "mythique";
+  raidObjective: "normal" | "heroic" | "mythic";
   availWednesday: boolean;
   availFriday: boolean;
   availSaturday: boolean;
@@ -63,7 +62,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
       "Ancien raid leader, expérience mythique sur toutes les extensions.",
     expTww: "Déjà complété le raid normal en PUG.",
     ilvl: 485,
-    raidObjective: "mythique",
+    raidObjective: "mythic",
     availWednesday: true,
     availFriday: true,
     availSaturday: true,
@@ -95,7 +94,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     expRaid: "Tous les raids complétés en mythique jusqu'à Dragonflight.",
     expTww: "Première semaine de raid complétée.",
     ilvl: 492,
-    raidObjective: "mythique",
+    raidObjective: "mythic",
     availWednesday: true,
     availFriday: true,
     availSaturday: false,
@@ -127,7 +126,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     expRaid: "Ancien membre de guilde top 100.",
     expTww: "Déjà vu tous les mécaniques en test.",
     ilvl: 490,
-    raidObjective: "mythique",
+    raidObjective: "mythic",
     availWednesday: true,
     availFriday: true,
     availSaturday: true,
@@ -156,8 +155,7 @@ const ITEMS_PER_PAGE = 5;
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const [applications, setApplications] =
-    useState<GuildApplication[]>(MOCK_APPLICATIONS);
+  const [applications, setApplications] = useState<GuildApplication[]>([]);
   const [selectedApp, setSelectedApp] = useState<GuildApplication | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
@@ -166,27 +164,22 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
-  // Vérifier l'authentification
-  useEffect(() => {
-    // Fonction pour récupérer un cookie
-    const getCookie = (name: string) => {
-      const match = document.cookie.match(
-        new RegExp("(^| )" + name + "=([^;]+)"),
-      );
-      return match ? decodeURIComponent(match[2]) : null;
-    };
-
-    const adminToken = getCookie("admin_token");
-    const adminUser = getCookie("admin_user");
-    const isAuthenticated = AdminAuth.isAuthenticated(adminToken, adminUser);
-
-    if (!isAuthenticated) {
-      router.push("/admin/login");
-    } else {
-      // Simuler le chargement des données
-      setTimeout(() => setLoading(false), 1000);
+  const loadApplications = async () => {
+    try {
+      const response = await fetch("/api/applications", { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error("load_failed");
+      }
+      const data = await response.json();
+      setApplications(data.applications || []);
+    } finally {
+      setLoading(false);
     }
-  }, [router]);
+  };
+
+  useEffect(() => {
+    void loadApplications();
+  }, []);
 
   // Filtrer les applications
   const filteredApplications = applications.filter((app) => {
@@ -216,12 +209,8 @@ export default function AdminDashboardPage() {
     rejected: applications.filter((app) => app.status === "rejected").length,
   };
 
-  const handleLogout = () => {
-    // Supprimer les cookies en les expirant
-    document.cookie =
-      "admin_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    document.cookie =
-      "admin_user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  const handleLogout = async () => {
+    await fetch("/api/admin/logout", { method: "POST" });
     router.push("/admin/login");
   };
 
@@ -234,21 +223,41 @@ export default function AdminDashboardPage() {
     id: number,
     newStatus: GuildApplication["status"],
   ) => {
-    setApplications((prev) =>
-      prev.map((app) => (app.id === id ? { ...app, status: newStatus } : app)),
-    );
-    if (selectedApp?.id === id) {
-      setSelectedApp({ ...selectedApp, status: newStatus });
-    }
+    void (async () => {
+      const response = await fetch(`/api/applications/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      setApplications((prev) =>
+        prev.map((app) => (app.id === id ? { ...app, status: newStatus } : app)),
+      );
+      if (selectedApp?.id === id) {
+        setSelectedApp({ ...selectedApp, status: newStatus });
+      }
+    })();
   };
 
   const handleDelete = (id: number) => {
     if (confirm("Êtes-vous sûr de vouloir supprimer cette candidature ?")) {
-      setApplications((prev) => prev.filter((app) => app.id !== id));
-      if (selectedApp?.id === id) {
-        setShowDetailsModal(false);
-        setSelectedApp(null);
-      }
+      void (async () => {
+        const response = await fetch(`/api/applications/${id}`, {
+          method: "DELETE",
+        });
+        if (!response.ok) {
+          return;
+        }
+        setApplications((prev) => prev.filter((app) => app.id !== id));
+        if (selectedApp?.id === id) {
+          setShowDetailsModal(false);
+          setSelectedApp(null);
+        }
+      })();
     }
   };
 
@@ -288,7 +297,7 @@ export default function AdminDashboardPage() {
         return "Normal";
       case "heroic":
         return "Héroïque";
-      case "mythique":
+      case "mythic":
         return "Mythique";
       default:
         return objective;
@@ -567,7 +576,7 @@ export default function AdminDashboardPage() {
                     <td className="py-4 px-6">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          app.raidObjective === "mythique"
+                          app.raidObjective === "mythic"
                             ? "bg-purple-500/20 text-purple-400"
                             : app.raidObjective === "heroic"
                               ? "bg-blue-500/20 text-blue-400"
@@ -770,7 +779,7 @@ export default function AdminDashboardPage() {
                       </label>
                       <div
                         className={`px-4 py-2 rounded-lg font-medium ${
-                          selectedApp.raidObjective === "mythique"
+                          selectedApp.raidObjective === "mythic"
                             ? "bg-purple-500/20 text-purple-400"
                             : selectedApp.raidObjective === "heroic"
                               ? "bg-blue-500/20 text-blue-400"

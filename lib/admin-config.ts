@@ -20,9 +20,6 @@ export const ADMIN_CONFIG = {
     HTTP_ONLY: true,
   },
 
-  // Demo mode settings (for development)
-  DEMO_MODE: process.env.NODE_ENV === "development",
-
   // Admin login page path
   LOGIN_PATH: "/admin/login",
 
@@ -86,13 +83,6 @@ export const AdminAuth = {
     return parts.join("; ");
   },
 
-  // Generate demo credentials (development only)
-  getDemoCredentials() {
-    return {
-      username: "admin",
-      password: "demo123",
-    };
-  },
 };
 
 // Environment variable validation
@@ -107,11 +97,6 @@ export function validateAdminConfig(): string[] {
     warnings.push(
       "CRITICAL: Using default admin secret in production. Change ADMIN_SECRET environment variable immediately!",
     );
-  }
-
-  // Check if demo mode is enabled in production
-  if (process.env.NODE_ENV === "production" && ADMIN_CONFIG.DEMO_MODE) {
-    warnings.push("WARNING: Demo mode should be disabled in production");
   }
 
   // Check if cookies are secure in production

@@ -74,6 +74,8 @@ export default function HomePage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [availableSpecs, setAvailableSpecs] = useState<string[]>([]);
 
@@ -142,30 +144,44 @@ export default function HomePage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (validateForm()) {
-      // Ici, on enverrait les données à l'API
-      console.log("Formulaire soumis:", formData);
-
-      // Simulation d'envoi réussi
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({
-          pseudo: "",
-          wowClass: "",
-          wowSpec: "",
-          expClass: "",
-          expRaid: "",
-          expTww: "",
-          ilvl: "",
-          raidObjective: "normal",
-          availabilities: [],
+      try {
+        setSubmitting(true);
+        const response = await fetch("/api/applications", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         });
-        setAvailableSpecs([]);
-      }, 3000);
+
+        if (!response.ok) {
+          throw new Error("submit_failed");
+        }
+
+        setSubmitted(true);
+        setTimeout(() => {
+          setSubmitted(false);
+          setFormData({
+            pseudo: "",
+            wowClass: "",
+            wowSpec: "",
+            expClass: "",
+            expRaid: "",
+            expTww: "",
+            ilvl: "",
+            raidObjective: "normal",
+            availabilities: [],
+          });
+          setAvailableSpecs([]);
+        }, 3000);
+      } catch {
+        setSubmitError("Impossible d'envoyer la candidature");
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
@@ -570,12 +586,20 @@ export default function HomePage() {
                   variants={itemVariants}
                   className="md:col-span-2 mt-8"
                 >
+                  {submitError && (
+                    <p className="mb-3 text-sm text-destructive text-center">
+                      {submitError}
+                    </p>
+                  )}
                   <button
                     type="submit"
+                    disabled={submitting}
                     className="w-full py-4 px-6 bg-gradient-to-r from-primary to-primary-700 text-white font-bold rounded-lg shadow-gold hover:shadow-void-xl transition-all duration-300 flex items-center justify-center group"
                   >
                     <Sword className="w-5 h-5 mr-3 transform group-hover:rotate-12 transition-transform" />
-                    Soumettre ma Candidature
+                    {submitting
+                      ? "Envoi en cours..."
+                      : "Soumettre ma Candidature"}
                     <div className="ml-3 w-2 h-2 bg-accent-gold rounded-full animate-pulse"></div>
                   </button>
                   <p className="text-center text-sm text-night-300 mt-3">
