@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { ADMIN_CONFIG, AdminAuth } from "@/lib/admin-config";
+import { ADMIN_CONFIG, AdminAuth } from "./admin-config";
 
 export async function isAdminRequestAuthenticated(): Promise<boolean> {
   const store = await cookies();

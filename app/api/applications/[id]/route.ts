@@ -3,8 +3,8 @@ import {
   deleteApplication,
   updateApplicationStatus,
   type ApplicationStatus,
-} from "@/lib/applications-repository";
-import { isAdminRequestAuthenticated } from "@/lib/api-admin-auth";
+} from "../../../../lib/applications-repository";
+import { isAdminRequestAuthenticated } from "../../../../lib/api-admin-auth";
 
 export async function PATCH(
   request: Request,

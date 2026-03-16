@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { ADMIN_CONFIG } from "@/lib/admin-config";
-import { verifyAdminCredentials } from "@/lib/admin-repository";
+import { ADMIN_CONFIG } from "../../../../lib/admin-config";
+import { verifyAdminCredentials } from "../../../../lib/admin-repository";
 
 export async function POST(request: Request) {
   try {

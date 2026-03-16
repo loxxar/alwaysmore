@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { ADMIN_CONFIG } from "@/lib/admin-config";
+import { ADMIN_CONFIG } from "../../../../lib/admin-config";
 
 export async function POST() {
   const response = NextResponse.json({ ok: true }, { status: 200 });

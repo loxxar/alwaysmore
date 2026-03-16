@@ -1,4 +1,4 @@
-import { db, type DbRow } from "@/lib/db";
+import { db, type DbRow } from "./db";
 
 export type ApplicationStatus = "pending" | "reviewed" | "accepted" | "rejected";
 export type RaidObjective = "normal" | "heroic" | "mythic";

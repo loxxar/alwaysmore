@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
-import { createApplication, listApplications } from "@/lib/applications-repository";
-import { isAdminRequestAuthenticated } from "@/lib/api-admin-auth";
+import {
+  createApplication,
+  listApplications,
+} from "../../../lib/applications-repository";
+import { isAdminRequestAuthenticated } from "../../../lib/api-admin-auth";
 
 export async function GET() {
   try {

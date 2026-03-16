@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { db, type DbRow } from "@/lib/db";
+import { db, type DbRow } from "./db";
 
 interface AdminUserRow extends DbRow {
   id: number;
