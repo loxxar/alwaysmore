@@ -107,7 +107,7 @@ Dans le panneau Hostinger > Variables d'environnement, ajoutez :
 NODE_ENV=production
 NEXT_PUBLIC_APP_NAME="Raid Always More"
 NEXT_PUBLIC_APP_DESCRIPTION="Formulaire de recrutement pour la guilde WoW Raid Always More"
-NEXT_PUBLIC_APP_URL=https://votre-domaine.com
+NEXT_PUBLIC_APP_URL=https://alwaysmore.linkz.tn
 NEXT_PUBLIC_ADMIN_ENABLED=true
 
 # ====================
@@ -140,7 +140,7 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=votre-email@gmail.com
 SMTP_PASSWORD=votre-mot-de-passe-app
-NOTIFICATION_EMAIL=admin@votre-domaine.com
+NOTIFICATION_EMAIL=admin@alwaysmore.linkz.tn
 ```
 
 ---
@@ -164,11 +164,10 @@ Surveillez ces messages dans les logs :
 ```
 
 ### Vérification après Déploiement
-1. **Accédez à votre URL** : `https://votre-domaine.com`
+1. **Accédez à votre URL** : `https://alwaysmore.linkz.tn`
 2. **Testez le formulaire** : Soumettez une candidature test
-3. **Testez l'admin** : `https://votre-domaine.com/admin/login`
-   - Identifiants de démo : N'importe quels identifiants non vides
-4. **Vérifiez le dashboard** : `https://votre-domaine.com/admin/dashboard`
+3. **Testez l'admin** : `https://alwaysmore.linkz.tn/admin/login`
+4. **Vérifiez le dashboard** : `https://alwaysmore.linkz.tn/admin/dashboard`
 
 ---
 
@@ -317,8 +316,8 @@ git push origin main
 ## 🎉 Félicitations !
 Votre application "Raid Always More" est maintenant déployée sur Hostinger. Les joueurs peuvent soumettre leurs candidatures et vous pouvez les gérer via le tableau de bord d'administration.
 
-**URL d'accès** : `https://votre-domaine.com`  
-**Admin** : `https://votre-domaine.com/admin/login`
+**URL d'accès** : `https://alwaysmore.linkz.tn`  
+**Admin** : `https://alwaysmore.linkz.tn/admin/login`
 
 Pour toute question ou problème, consultez la section [Résolution de Problèmes](#résolution-de-problèmes) ou contactez le support.
 

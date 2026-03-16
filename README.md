@@ -88,7 +88,7 @@ BCRYPT_SALT_ROUNDS=12
 
 # Application
 NEXT_PUBLIC_APP_NAME="Raid Always More"
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_URL=https://alwaysmore.linkz.tn
 NEXT_PUBLIC_ADMIN_ENABLED=true
 
 # Base de données (optionnel)
