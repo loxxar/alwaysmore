@@ -13,6 +13,7 @@ import {
   Eye,
   LogOut,
   Home,
+  Swords,
   User,
   UserCheck,
   UserX,
@@ -325,6 +326,13 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="flex items-center space-x-4">
+            <button
+              onClick={() => router.push("/admin/compo")}
+              className="flex items-center text-sm text-night-300 hover:text-accent-gold transition-colors"
+            >
+              <Swords className="w-4 h-4 mr-2" />
+              Compo Raid
+            </button>
             <button
               onClick={() => router.push("/")}
               className="flex items-center text-sm text-night-300 hover:text-accent-gold transition-colors"
