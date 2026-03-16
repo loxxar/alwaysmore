@@ -14,6 +14,7 @@ export interface GuildApplication {
   ilvl: number;
   raidObjective: RaidObjective;
   availWednesday: boolean;
+  availThursday: boolean;
   availFriday: boolean;
   availSaturday: boolean;
   createdAt: string;
@@ -31,6 +32,7 @@ interface ApplicationRow extends DbRow {
   ilvl: number;
   raid_objective: RaidObjective;
   avail_wednesday: number;
+  avail_thursday: number;
   avail_friday: number;
   avail_saturday: number;
   created_at: Date;
@@ -61,6 +63,7 @@ function mapRow(row: ApplicationRow): GuildApplication {
     ilvl: row.ilvl,
     raidObjective: row.raid_objective,
     availWednesday: Boolean(row.avail_wednesday),
+    availThursday: Boolean(row.avail_thursday),
     availFriday: Boolean(row.avail_friday),
     availSaturday: Boolean(row.avail_saturday),
     createdAt: row.created_at.toISOString(),
@@ -70,7 +73,7 @@ function mapRow(row: ApplicationRow): GuildApplication {
 
 export async function listApplications(): Promise<GuildApplication[]> {
   const [rows] = await db.query<ApplicationRow[]>(
-    `SELECT id, pseudo, wow_class, wow_spec, exp_class, exp_raid, exp_tww, ilvl, raid_objective, avail_wednesday, avail_friday, avail_saturday, created_at, status
+    `SELECT id, pseudo, wow_class, wow_spec, exp_class, exp_raid, exp_tww, ilvl, raid_objective, avail_wednesday, avail_thursday, avail_friday, avail_saturday, created_at, status
      FROM inscrits
      ORDER BY created_at DESC`,
   );
@@ -82,8 +85,8 @@ export async function createApplication(input: CreateApplicationInput): Promise<
   await db.execute(
     `INSERT INTO inscrits (
       pseudo, wow_class, wow_spec, exp_class, exp_raid, exp_tww, ilvl, raid_objective,
-      avail_wednesday, avail_friday, avail_saturday
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      avail_wednesday, avail_thursday, avail_friday, avail_saturday
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       input.pseudo,
       input.wowClass,
@@ -94,6 +97,7 @@ export async function createApplication(input: CreateApplicationInput): Promise<
       input.ilvl,
       input.raidObjective,
       input.availabilities.includes("wednesday") ? 1 : 0,
+      input.availabilities.includes("thursday") ? 1 : 0,
       input.availabilities.includes("friday") ? 1 : 0,
       input.availabilities.includes("saturday") ? 1 : 0,
     ],

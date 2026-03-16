@@ -55,6 +55,7 @@ const RAID_OBJECTIVES = [
 
 const AVAILABILITIES = [
   { id: "wednesday", label: "Mercredi 21h-23h" },
+  { id: "thursday", label: "Jeudi 21h-23h" },
   { id: "friday", label: "Vendredi 21h-23h" },
   { id: "saturday", label: "Samedi 21h-23h" },
 ];
@@ -572,7 +573,7 @@ export default function HomePage() {
                     </p>
                   )}
                   <p className="mt-2 text-sm text-night-300">
-                    Sélectionnés: {formData.availabilities.length}/3 (
+                    Sélectionnés: {formData.availabilities.length}/4 (
                     {formData.availabilities.length >= 2
                       ? "✓ Validé"
                       : "Besoin de " +

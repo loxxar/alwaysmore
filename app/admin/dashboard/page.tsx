@@ -44,6 +44,7 @@ interface GuildApplication {
   ilvl: number;
   raidObjective: "normal" | "heroic" | "mythic";
   availWednesday: boolean;
+  availThursday: boolean;
   availFriday: boolean;
   availSaturday: boolean;
   createdAt: string;
@@ -64,6 +65,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     ilvl: 485,
     raidObjective: "mythic",
     availWednesday: true,
+    availThursday: false,
     availFriday: true,
     availSaturday: true,
     createdAt: "2024-01-15T14:30:00Z",
@@ -80,6 +82,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     ilvl: 478,
     raidObjective: "heroic",
     availWednesday: true,
+    availThursday: true,
     availFriday: false,
     availSaturday: true,
     createdAt: "2024-01-16T10:15:00Z",
@@ -96,6 +99,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     ilvl: 492,
     raidObjective: "mythic",
     availWednesday: true,
+    availThursday: false,
     availFriday: true,
     availSaturday: false,
     createdAt: "2024-01-17T16:45:00Z",
@@ -112,6 +116,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     ilvl: 475,
     raidObjective: "normal",
     availWednesday: false,
+    availThursday: false,
     availFriday: true,
     availSaturday: true,
     createdAt: "2024-01-18T09:20:00Z",
@@ -128,6 +133,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     ilvl: 490,
     raidObjective: "mythic",
     availWednesday: true,
+    availThursday: true,
     availFriday: true,
     availSaturday: true,
     createdAt: "2024-01-19T13:10:00Z",
@@ -144,6 +150,7 @@ const MOCK_APPLICATIONS: GuildApplication[] = [
     ilvl: 482,
     raidObjective: "heroic",
     availWednesday: true,
+    availThursday: false,
     availFriday: false,
     availSaturday: true,
     createdAt: "2024-01-20T11:30:00Z",
@@ -780,6 +787,10 @@ export default function AdminDashboardPage() {
                           {
                             day: "Mercredi",
                             available: selectedApp.availWednesday,
+                          },
+                          {
+                            day: "Jeudi",
+                            available: selectedApp.availThursday,
                           },
                           {
                             day: "Vendredi",
