@@ -92,6 +92,9 @@ const nextConfig = {
     ignoreDuringBuilds: process.env.NODE_ENV === "production",
   },
 
+  // Modules natifs à exclure du bundling (chargés depuis node_modules au runtime)
+  serverExternalPackages: ["mysql2", "argon2", "bcrypt"],
+
   // Optimisations de compilation
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
