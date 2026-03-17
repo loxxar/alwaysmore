@@ -13,20 +13,62 @@ interface GuildApplication {
   status: string;
 }
 
-const CLASS_ICONS: Record<string, string> = {
-  "Chasseur de démons": "https://wow.zamimg.com/images/wow/icons/medium/classicon_demonhunter.jpg",
-  "Chevalier de la mort": "https://wow.zamimg.com/images/wow/icons/medium/classicon_deathknight.jpg",
-  "Chaman": "https://wow.zamimg.com/images/wow/icons/medium/classicon_shaman.jpg",
-  "Chasseur": "https://wow.zamimg.com/images/wow/icons/medium/classicon_hunter.jpg",
-  "Démoniste": "https://wow.zamimg.com/images/wow/icons/medium/classicon_warlock.jpg",
-  "Druide": "https://wow.zamimg.com/images/wow/icons/medium/classicon_druid.jpg",
-  "Évocateur": "https://wow.zamimg.com/images/wow/icons/medium/classicon_evoker.jpg",
-  "Guerrier": "https://wow.zamimg.com/images/wow/icons/medium/classicon_warrior.jpg",
-  "Mage": "https://wow.zamimg.com/images/wow/icons/medium/classicon_mage.jpg",
-  "Moine": "https://wow.zamimg.com/images/wow/icons/medium/classicon_monk.jpg",
-  "Paladin": "https://wow.zamimg.com/images/wow/icons/medium/classicon_paladin.jpg",
-  "Prêtre": "https://wow.zamimg.com/images/wow/icons/medium/classicon_priest.jpg",
-  "Voleur": "https://wow.zamimg.com/images/wow/icons/medium/classicon_rogue.jpg",
+const BASE = "https://wow.zamimg.com/images/wow/icons/medium";
+
+// Clé composite "Classe_Spé" pour éviter les collisions (ex: Sacré Paladin ≠ Sacré Prêtre)
+const SPEC_ICONS: Record<string, string> = {
+  // Chasseur de démons
+  "Chasseur de démons_Dévastation": `${BASE}/ability_demonhunter_specdps.jpg`,
+  "Chasseur de démons_Vengeance":   `${BASE}/ability_demonhunter_spectank.jpg`,
+  // Chevalier de la mort
+  "Chevalier de la mort_Sang":  `${BASE}/spell_deathknight_bloodpresence.jpg`,
+  "Chevalier de la mort_Givre": `${BASE}/spell_deathknight_frostpresence.jpg`,
+  "Chevalier de la mort_Impie": `${BASE}/spell_deathknight_unholypresence.jpg`,
+  // Chaman
+  "Chaman_Élémentaire":  `${BASE}/spell_nature_lightning.jpg`,
+  "Chaman_Amélioration": `${BASE}/spell_shaman_improvedstormstrike.jpg`,
+  "Chaman_Restauration": `${BASE}/spell_nature_magicimmunity.jpg`,
+  // Chasseur
+  "Chasseur_Maîtrise des bêtes": `${BASE}/ability_hunter_bestialdiscipline.jpg`,
+  "Chasseur_Précision":          `${BASE}/ability_hunter_focusedaim.jpg`,
+  "Chasseur_Survie":             `${BASE}/ability_hunter_camouflage.jpg`,
+  // Démoniste
+  "Démoniste_Affliction":   `${BASE}/spell_shadow_deathcoil.jpg`,
+  "Démoniste_Démonologie":  `${BASE}/spell_shadow_metamorphosis.jpg`,
+  "Démoniste_Destruction":  `${BASE}/spell_shadow_rainoffire.jpg`,
+  // Druide
+  "Druide_Équilibre":    `${BASE}/spell_nature_starfall.jpg`,
+  "Druide_Farouche":     `${BASE}/ability_druid_catform.jpg`,
+  "Druide_Gardien":      `${BASE}/ability_racial_bearform.jpg`,
+  "Druide_Restauration": `${BASE}/spell_nature_healingtouch.jpg`,
+  // Évocateur
+  "Évocateur_Dévastation":  `${BASE}/classicon_evoker_devastation.jpg`,
+  "Évocateur_Préservation": `${BASE}/classicon_evoker_preservation.jpg`,
+  "Évocateur_Augmentation": `${BASE}/classicon_evoker_augmentation.jpg`,
+  // Guerrier
+  "Guerrier_Armes":      `${BASE}/ability_warrior_savageblow.jpg`,
+  "Guerrier_Fureur":     `${BASE}/ability_warrior_innerrage.jpg`,
+  "Guerrier_Protection": `${BASE}/ability_warrior_defensivestance.jpg`,
+  // Mage
+  "Mage_Arcane": `${BASE}/spell_holy_magicalsentry.jpg`,
+  "Mage_Feu":    `${BASE}/spell_fire_firebolt02.jpg`,
+  "Mage_Givre":  `${BASE}/spell_frost_frostbolt02.jpg`,
+  // Moine
+  "Moine_Maître brasseur": `${BASE}/spell_monk_brewmaster_spec.jpg`,
+  "Moine_Tisse-brume":     `${BASE}/spell_monk_mistweaver_spec.jpg`,
+  "Moine_Marche-vent":     `${BASE}/spell_monk_windwalker_spec.jpg`,
+  // Paladin
+  "Paladin_Sacré":      `${BASE}/spell_holy_holybolt.jpg`,
+  "Paladin_Protection": `${BASE}/ability_paladin_shieldofthetemplar.jpg`,
+  "Paladin_Vindicte":   `${BASE}/spell_holy_auraoflight.jpg`,
+  // Prêtre
+  "Prêtre_Discipline": `${BASE}/spell_holy_powerwordshield.jpg`,
+  "Prêtre_Sacré":      `${BASE}/spell_holy_guardianspirit.jpg`,
+  "Prêtre_Ombre":      `${BASE}/spell_shadow_shadowform.jpg`,
+  // Voleur
+  "Voleur_Assassinat":   `${BASE}/ability_rogue_eviscerate.jpg`,
+  "Voleur_Hors-la-loi":  `${BASE}/ability_rogue_waylay.jpg`,
+  "Voleur_Finesse":      `${BASE}/ability_rogue_slicedice.jpg`,
 };
 
 const CLASS_COLORS: Record<string, string> = {
@@ -286,7 +328,8 @@ function PlayerToken({
   isDragging: boolean;
   compact?: boolean;
 }) {
-  const iconUrl = CLASS_ICONS[app.wowClass] ?? CLASS_ICONS["Guerrier"];
+  const iconUrl = SPEC_ICONS[`${app.wowClass}_${app.wowSpec}`]
+    ?? `https://wow.zamimg.com/images/wow/icons/medium/classicon_warrior.jpg`;
   const color = CLASS_COLORS[app.wowClass] ?? "#FFFFFF";
 
   if (compact) {
