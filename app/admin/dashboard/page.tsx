@@ -29,6 +29,7 @@ import {
   XCircle,
   AlertCircle,
   Crown,
+  Trash2,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -247,6 +248,17 @@ export default function AdminDashboardPage() {
       if (selectedApp?.id === id) {
         setSelectedApp({ ...selectedApp, status: newStatus });
       }
+    })();
+  };
+
+  const handleDelete = (id: number) => {
+    if (!confirm("Supprimer définitivement cette candidature ?")) return;
+    void (async () => {
+      const response = await fetch(`/api/applications/${id}`, { method: "DELETE" });
+      if (!response.ok) return;
+      setApplications((prev) => prev.filter((app) => app.id !== id));
+      setShowDetailsModal(false);
+      setSelectedApp(null);
     })();
   };
 
@@ -880,6 +892,13 @@ export default function AdminDashboardPage() {
                 </div>
 
                 <div className="flex items-center space-x-3">
+                  <button
+                    onClick={() => handleDelete(selectedApp.id)}
+                    title="Supprimer la candidature"
+                    className="p-2 text-night-400 hover:text-destructive hover:bg-destructive/10 rounded-lg transition-colors"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
                   <button
                     onClick={() =>
                       handleUpdateStatus(selectedApp.id, "rejected")
