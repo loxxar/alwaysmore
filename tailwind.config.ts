@@ -111,6 +111,16 @@ const config: Config = {
           DEFAULT: "#10b981",
           foreground: "#ecfdf5",
         },
+        midnight: {
+          deep: "#0a050f",
+          void: "#1a0a1f",
+          purple: "#8b5cf6",
+          blue: "#1e3a8a",
+          gold: "#d97706",
+          bronze: "#92400e",
+          silver: "#cbd5e1",
+          crystal: "#7dd3fc",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

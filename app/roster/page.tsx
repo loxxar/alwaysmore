@@ -367,7 +367,7 @@ export default function RosterPage() {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-[#10b981]">
-                    {stats.healersCount}
+                    {stats.healsCount}
                   </div>
                   <div className="text-sm text-[#cbd5e1]">
                     Guérisseurs de l'Ombre
