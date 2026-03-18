@@ -234,11 +234,16 @@ export default function RosterPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Background effects */}
+      {/* Background effects Midnight */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-void-radial opacity-100"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-900/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-midnight-deep via-midnight-void to-midnight-purple opacity-100"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-midnight-purple/30 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-midnight-blue/30 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+        {/* Étoiles filantes */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/3 left-0 w-1 h-1 bg-midnight-gold rounded-full animate-shooting-star"></div>
+          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-midnight-gold rounded-full animate-shooting-star delay-2000"></div>
+        </div>
       </div>
 
       <div className="container mx-auto px-4 py-4">
@@ -249,20 +254,20 @@ export default function RosterPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-4"
         >
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent-gold/20 border border-void mb-3">
-            <Crown className="w-8 h-8 text-accent-gold" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full midnight-portal mb-3">
+            <Crown className="w-8 h-8 text-midnight-gold animate-crystal-glow" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-fantasy font-bold text-accent-gold mb-2">
-            Composition du Raid
+          <h1 className="text-3xl md:text-4xl font-fantasy font-bold midnight-rune mb-2">
+            Composition du Raid Midnight
           </h1>
-          <p className="text-lg text-night-200 max-w-2xl mx-auto">
+          <p className="text-lg text-midnight-silver max-w-2xl mx-auto">
             Découvrez les membres de la guilde{" "}
-            <span className="text-primary font-semibold">
+            <span className="text-midnight-crystal font-semibold">
               Guild Always More
             </span>{" "}
             qui combattent dans les profondeurs de Midnight
           </p>
-          <div className="w-32 h-1 bg-gradient-to-r from-primary via-accent-gold to-primary rounded-full mx-auto mt-3"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-midnight-purple via-midnight-gold to-midnight-crystal rounded-full mx-auto mt-3"></div>
         </motion.div>
 
         {/* Chargement/Erreur */}
@@ -272,9 +277,9 @@ export default function RosterPage() {
             animate={{ opacity: 1 }}
             className="text-center py-6"
           >
-            <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-3"></div>
-            <p className="text-night-200">
-              Chargement de la composition du raid...
+            <div className="inline-block w-12 h-12 border-4 border-midnight-crystal border-t-transparent rounded-full animate-spin mb-3"></div>
+            <p className="text-midnight-silver">
+              Chargement de la composition du raid Midnight...
             </p>
           </motion.div>
         )}
@@ -283,11 +288,11 @@ export default function RosterPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="bg-destructive/10 border border-destructive rounded-2xl p-6 mb-6 text-center"
+            className="bg-midnight-void/50 border border-midnight-purple/50 rounded-2xl p-6 mb-6 text-center midnight-shadow"
           >
-            <AlertCircle className="w-10 h-10 text-destructive mx-auto mb-4" />
-            <p className="text-destructive mb-2">{error}</p>
-            <p className="text-night-300 text-sm">
+            <AlertCircle className="w-10 h-10 text-midnight-crystal mx-auto mb-4" />
+            <p className="text-midnight-crystal mb-2">{error}</p>
+            <p className="text-midnight-silver text-sm">
               Affichage des données de démonstration
             </p>
           </motion.div>
@@ -303,68 +308,70 @@ export default function RosterPage() {
           >
             <motion.div
               variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 shadow-void"
+              className="bg-background-card/90 backdrop-blur-lg border border-midnight-purple/30 rounded-2xl p-6 shadow-void midnight-shadow"
             >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
-                  <Users className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
+                  <Users className="w-6 h-6 text-midnight-deep" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-accent-gold">
+                  <div className="text-3xl font-bold text-midnight-gold">
                     {stats.totalMembers}
                   </div>
-                  <div className="text-sm text-night-300">Membres totaux</div>
+                  <div className="text-sm text-midnight-silver">
+                    Membres totaux
+                  </div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 shadow-void"
+              className="bg-background-card/90 backdrop-blur-lg border border-midnight-blue/30 rounded-2xl p-6 shadow-void midnight-shadow"
             >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mr-4">
-                  <Shield className="w-6 h-6 text-blue-400" />
+                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
+                  <Shield className="w-6 h-6 text-midnight-deep" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-blue-400">
+                  <div className="text-3xl font-bold text-midnight-crystal">
                     {stats.tanksCount}
                   </div>
-                  <div className="text-sm text-night-300">Tanks</div>
+                  <div className="text-sm text-midnight-silver">Tanks</div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 shadow-void"
+              className="bg-background-card/90 backdrop-blur-lg border border-midnight-purple/30 rounded-2xl p-6 shadow-void midnight-shadow"
             >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mr-4">
-                  <Heart className="w-6 h-6 text-green-400" />
+                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
+                  <Heart className="w-6 h-6 text-midnight-deep" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-green-400">
+                  <div className="text-3xl font-bold text-midnight-crystal">
                     {stats.healsCount}
                   </div>
-                  <div className="text-sm text-night-300">Heals</div>
+                  <div className="text-sm text-midnight-silver">Heals</div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 shadow-void"
+              className="bg-background-card/90 backdrop-blur-lg border border-midnight-gold/30 rounded-2xl p-6 shadow-void midnight-shadow"
             >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mr-4">
-                  <Sword className="w-6 h-6 text-red-400" />
+                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
+                  <Sword className="w-6 h-6 text-midnight-deep" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-red-400">
+                  <div className="text-3xl font-bold text-midnight-gold">
                     {stats.dpsCount}
                   </div>
-                  <div className="text-sm text-night-300">DPS</div>
+                  <div className="text-sm text-midnight-silver">DPS</div>
                 </div>
               </div>
             </motion.div>
@@ -377,44 +384,46 @@ export default function RosterPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 mb-8 shadow-void"
+            className="bg-background-card/90 backdrop-blur-lg border border-midnight-purple/30 rounded-2xl p-6 mb-8 shadow-void midnight-shadow"
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-4">
-                  <BarChart3 className="w-5 h-5 text-purple-400" />
+                <div className="w-10 h-10 rounded-full midnight-crystal flex items-center justify-center mr-4">
+                  <BarChart3 className="w-5 h-5 text-midnight-deep" />
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-accent-gold">
+                  <div className="text-lg font-bold text-midnight-silver">
                     iLvl Moyen
                   </div>
-                  <div className="text-2xl font-bold text-primary">
+                  <div className="text-2xl font-bold text-midnight-crystal">
                     {stats.avgIlvl > 0 ? stats.avgIlvl : "N/A"}
                   </div>
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center mr-4">
-                  <Target className="w-5 h-5 text-accent-gold" />
+                <div className="w-10 h-10 rounded-full midnight-crystal flex items-center justify-center mr-4">
+                  <Target className="w-5 h-5 text-midnight-deep" />
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-accent-gold">
+                  <div className="text-lg font-bold text-midnight-silver">
                     Objectif Raid
                   </div>
-                  <div className="text-2xl font-bold text-purple-400">
+                  <div className="text-2xl font-bold text-midnight-gold">
                     NM/HM
                   </div>
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4">
-                  <Zap className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-full midnight-crystal flex items-center justify-center mr-4">
+                  <Zap className="w-5 h-5 text-midnight-deep" />
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-accent-gold">
+                  <div className="text-lg font-bold text-midnight-silver">
                     Progression
                   </div>
-                  <div className="text-2xl font-bold text-success">Actif</div>
+                  <div className="text-2xl font-bold text-midnight-crystal">
+                    Actif
+                  </div>
                 </div>
               </div>
             </div>
@@ -437,9 +446,9 @@ export default function RosterPage() {
                   >
                     {getRoleIcon(role)}
                   </div>
-                  <h2 className="text-xl font-fantasy font-bold text-accent-gold">
+                  <h2 className="text-xl font-fantasy font-bold midnight-rune">
                     {role}s{" "}
-                    <span className="text-night-300 text-base">
+                    <span className="text-midnight-silver text-base">
                       ({members.length})
                     </span>
                   </h2>
@@ -451,13 +460,13 @@ export default function RosterPage() {
                     <motion.div
                       key={member.id}
                       whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                      className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-4 shadow-void hover:shadow-void-xl transition-all duration-300"
+                      className="bg-background-card/90 backdrop-blur-lg border border-midnight-purple/30 rounded-2xl p-4 shadow-void hover:shadow-void-xl transition-all duration-300 midnight-shadow"
                     >
                       <div className="mb-2">
-                        <h3 className="text-lg font-bold text-accent-gold mb-1">
+                        <h3 className="text-lg font-bold text-midnight-gold mb-1">
                           {member.pseudo}
                         </h3>
-                        <div className="text-sm text-night-300 mb-1">
+                        <div className="text-sm text-midnight-silver mb-1">
                           {member.wowClass}
                         </div>
                         <div className="flex items-center mt-1">
@@ -484,11 +493,11 @@ export default function RosterPage() {
             animate={{ opacity: 1 }}
             className="text-center py-6"
           >
-            <Users className="w-12 h-12 text-night-400 mx-auto mb-3" />
-            <h3 className="text-xl font-bold text-accent-gold mb-1">
+            <Users className="w-12 h-12 text-midnight-silver mx-auto mb-3" />
+            <h3 className="text-xl font-bold text-midnight-gold mb-1">
               Aucun membre accepté
             </h3>
-            <p className="text-night-200">
+            <p className="text-midnight-silver">
               Aucun membre n'a encore été accepté dans la guilde.
             </p>
           </motion.div>
@@ -501,25 +510,25 @@ export default function RosterPage() {
           transition={{ delay: 0.8 }}
           className="mt-8 text-center"
         >
-          <div className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 shadow-void">
-            <h3 className="text-xl font-fantasy font-bold text-accent-gold mb-3">
+          <div className="bg-background-card/90 backdrop-blur-lg border border-midnight-purple/30 rounded-2xl p-6 shadow-void midnight-shadow">
+            <h3 className="text-xl font-fantasy font-bold midnight-rune mb-3">
               Rejoignez notre équipe
             </h3>
-            <p className="text-night-200 mb-4 max-w-2xl mx-auto">
+            <p className="text-midnight-silver mb-4 max-w-2xl mx-auto">
               Vous souhaitez combattre à nos côtés dans les raids de Midnight ?
               Postulez pour rejoindre la guilde.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary to-primary-700 text-white font-bold rounded-lg shadow-void hover:shadow-void-xl transition-all duration-300"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-midnight-purple to-midnight-blue text-white font-bold rounded-lg shadow-void hover:shadow-void-xl transition-all duration-300"
               >
                 <Home className="w-5 h-5 mr-2" />
                 Retour à l'accueil
               </Link>
               <Link
                 href="/"
-                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-accent-gold to-yellow-600 text-void font-bold rounded-lg shadow-void hover:shadow-void-xl transition-all duration-300"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-midnight-gold to-midnight-bronze text-midnight-deep font-bold rounded-lg shadow-void hover:shadow-void-xl transition-all duration-300"
               >
                 <Target className="w-5 h-5 mr-2" />
                 Postuler maintenant
@@ -535,13 +544,13 @@ export default function RosterPage() {
           transition={{ delay: 1 }}
           className="mt-6 pt-6 border-t border-void/30"
         >
-          <div className="text-center text-sm text-night-400">
+          <div className="text-center text-sm text-midnight-silver">
             <p className="mb-1">
-              <Clock className="inline-block w-4 h-4 mr-2" />
+              <Clock className="inline-block w-4 h-4 mr-2 text-midnight-crystal" />
               Raids : Mercredi & Vendredi • 20h30 - 23h30
             </p>
             <p>
-              <Zap className="inline-block w-4 h-4 mr-2" />
+              <Zap className="inline-block w-4 h-4 mr-2 text-midnight-gold" />
               Progression actuelle : Démarrage Midnight
             </p>
           </div>

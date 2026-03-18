@@ -34,6 +34,17 @@
     --accent-gold: #fbbf24;
     --accent-silver: #e2e8f0;
     --accent-bronze: #b45309;
+
+    /* Palette Midnight spécifique */
+    --midnight-deep: #0a0614;
+    --midnight-void: #1a0b2e;
+    --midnight-purple: #4c1d95;
+    --midnight-blue: #1e3a8a;
+    --midnight-gold: #d97706;
+    --midnight-bronze: #92400e;
+    --midnight-silver: #cbd5e1;
+    --midnight-crystal: #7dd3fc;
+    --midnight-shadow: #581c87;
 }
 
 @layer base {
@@ -45,9 +56,10 @@
         @apply bg-background text-foreground font-sans antialiased;
         background: linear-gradient(
             135deg,
-            var(--void-base) 0%,
-            var(--night-blue) 50%,
-            var(--void-dark) 100%
+            var(--midnight-deep) 0%,
+            var(--midnight-void) 30%,
+            var(--midnight-purple) 60%,
+            var(--midnight-blue) 100%
         );
         min-height: 100vh;
         overflow-x: hidden;
@@ -330,6 +342,56 @@
         }
     }
 
+    @keyframes pulse-slow {
+        0%,
+        100% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    @keyframes shooting-star {
+        0% {
+            transform: translateX(-100px) translateY(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(100vw) translateY(100px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes crystal-glow {
+        0%,
+        100% {
+            filter: drop-shadow(0 0 5px var(--midnight-crystal));
+        }
+        50% {
+            filter: drop-shadow(0 0 20px var(--midnight-crystal));
+        }
+    }
+
+    @keyframes midnight-float {
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        33% {
+            transform: translateY(-10px) rotate(120deg);
+        }
+        66% {
+            transform: translateY(5px) rotate(240deg);
+        }
+    }
+
     /* Classes utilitaires */
     .animate-glow-pulse {
         animation: glow-pulse 2s ease-in-out infinite;
@@ -352,6 +414,22 @@
         );
         background-size: 200% 100%;
         animation: shimmer 2s linear infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+    }
+
+    .animate-shooting-star {
+        animation: shooting-star 8s linear infinite;
+    }
+
+    .animate-crystal-glow {
+        animation: crystal-glow 3s ease-in-out infinite;
+    }
+
+    .animate-midnight-float {
+        animation: midnight-float 6s ease-in-out infinite;
     }
 
     /* Masques et effets */
@@ -475,6 +553,78 @@
 
 .toast-warning {
     @apply bg-yellow-500/20 text-yellow-400 border-yellow-500/30;
+}
+
+/* Effets Midnight spécifiques */
+.midnight-portal {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(
+        circle at center,
+        var(--midnight-purple) 0%,
+        var(--midnight-void) 70%,
+        var(--midnight-deep) 100%
+    );
+}
+
+.midnight-portal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--midnight-crystal),
+        var(--midnight-gold),
+        var(--midnight-crystal),
+        transparent
+    );
+    animation: rotate 20s linear infinite;
+    opacity: 0.3;
+}
+
+.midnight-crystal {
+    background: linear-gradient(
+        135deg,
+        var(--midnight-crystal) 0%,
+        var(--midnight-silver) 50%,
+        var(--midnight-crystal) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 0 30px rgba(125, 211, 252, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.midnight-rune {
+    background: linear-gradient(
+        135deg,
+        var(--midnight-gold) 0%,
+        var(--midnight-bronze) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: var(--font-serif);
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(217, 119, 6, 0.3);
+}
+
+.midnight-shadow {
+    position: relative;
+}
+
+.midnight-shadow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        transparent 30%,
+        var(--midnight-shadow) 100%
+    );
+    opacity: 0.3;
+    z-index: -1;
 }
 
 /* Dark mode overrides */

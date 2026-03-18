@@ -10,6 +10,10 @@ import {
   Calendar,
   Target,
   Zap,
+  Moon,
+  Star,
+  Sparkles,
+  Gem,
 } from "lucide-react";
 
 // Données des classes et spécialisations WoW
@@ -47,10 +51,30 @@ const WOW_CLASSES = [
   { name: "Voleur", specializations: ["Assassinat", "Hors-la-loi", "Finesse"] },
 ];
 
+// Éléments décoratifs Midnight
+const MIDNIGHT_ELEMENTS = [
+  { icon: Moon, color: "text-midnight-purple", label: "Lune de Midnight" },
+  { icon: Star, color: "text-midnight-gold", label: "Étoile du Vide" },
+  { icon: Gem, color: "text-midnight-crystal", label: "Cristal de l'Ombre" },
+  {
+    icon: Sparkles,
+    color: "text-midnight-silver",
+    label: "Poussière d'Étoile",
+  },
+];
+
 const RAID_OBJECTIVES = [
   { value: "normal", label: "Normal" },
   { value: "heroic", label: "Héroïque" },
   { value: "mythic", label: "Mythique" },
+];
+
+// Citations Midnight
+const MIDNIGHT_QUOTES = [
+  "Dans les profondeurs de Midnight, seuls les plus résolus survivent.",
+  "L'ombre s'étend, mais notre lumière brille plus fort.",
+  "Chaque cristal raconte l'histoire d'un héros tombé.",
+  "Le Vide murmure, mais nous répondons par le fracas des armes.",
 ];
 
 const AVAILABILITIES = [
@@ -61,7 +85,6 @@ const AVAILABILITIES = [
 ];
 
 export default function HomePage() {
-  // État du formulaire
   const [formData, setFormData] = useState({
     pseudo: "",
     wowClass: "",
@@ -73,6 +96,8 @@ export default function HomePage() {
     raidObjective: "normal",
     availabilities: [] as string[],
   });
+  const [midnightQuote, setMidnightQuote] = useState("");
+  const [crystalRotation, setCrystalRotation] = useState(0);
 
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -199,12 +224,19 @@ export default function HomePage() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
 
   return (
     <div className="min-h-screen py-8 px-4">
+      {/* Éléments décoratifs Midnight */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-1/4 left-10 w-8 h-8 midnight-crystal rounded-full animate-midnight-float"></div>
+        <div className="absolute top-1/3 right-20 w-6 h-6 midnight-crystal rounded-full animate-midnight-float delay-1000"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-10 h-10 midnight-crystal rounded-full animate-midnight-float delay-2000"></div>
+      </div>
+
       <motion.div
         initial="hidden"
         animate="visible"
@@ -213,17 +245,48 @@ export default function HomePage() {
       >
         {/* Titre et description */}
         <motion.div variants={itemVariants} className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-fantasy font-bold text-accent-gold mb-4">
-            <Sword className="inline-block w-8 h-8 mr-3 mb-1" />
-            Rejoignez l'Élite
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full midnight-portal mb-6">
+            <Moon className="w-10 h-10 text-midnight-crystal animate-crystal-glow" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-fantasy font-bold midnight-rune mb-4">
+            <Sword className="inline-block w-8 h-8 mr-3 mb-1 text-midnight-gold" />
+            Rejoignez l'Élite de Midnight
           </h2>
-          <p className="text-night-200 text-lg max-w-2xl mx-auto">
-            Postulez pour rejoindre le raid Midnight. Les places seront limitées
-            et une sélection sera faite à l'entrée, car nous ne pourrons
-            malheureusement pas accueillir tout le monde. Merci de prendre le
-            temps de répondre sérieusement à toutes les questions du formulaire
-            : les candidatures incomplètes ne pourront pas être étudiées.
-          </p>
+          <div className="max-w-2xl mx-auto mb-6">
+            <p className="text-night-200 text-lg mb-4">
+              Postulez pour rejoindre le raid Midnight. Les places seront
+              limitées et une sélection sera faite à l'entrée, car nous ne
+              pourrons malheureusement pas accueillir tout le monde. Merci de
+              prendre le temps de répondre sérieusement à toutes les questions
+              du formulaire : les candidatures incomplètes ne pourront pas être
+              étudiées.
+            </p>
+            <div className="bg-midnight-void/50 border border-midnight-purple/30 rounded-xl p-4 mt-4">
+              <div className="flex items-center justify-center mb-2">
+                <Star className="w-4 h-4 text-midnight-gold mr-2" />
+                <p className="text-midnight-silver italic text-center">
+                  "Dans les profondeurs de Midnight, seuls les plus résolus
+                  survivent."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Éléments Midnight */}
+          <div className="flex justify-center space-x-6 mt-6">
+            {MIDNIGHT_ELEMENTS.map((element, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div
+                  className={`w-10 h-10 rounded-full bg-midnight-void/50 border border-midnight-purple/30 flex items-center justify-center mb-2 ${element.color}`}
+                >
+                  <element.icon className="w-5 h-5" />
+                </div>
+                <span className="text-xs text-midnight-silver">
+                  {element.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Formulaire */}
@@ -618,11 +681,11 @@ export default function HomePage() {
           variants={itemVariants}
           className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6"
         >
-          <div className="bg-background-card/50 backdrop-blur-sm border border-void rounded-xl p-6">
-            <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
-              <Target className="w-6 h-6 text-primary" />
+          <div className="bg-background-card/50 backdrop-blur-sm border border-midnight-purple/30 rounded-xl p-6 midnight-shadow">
+            <div className="w-12 h-12 rounded-lg bg-midnight-purple/20 flex items-center justify-center mb-4">
+              <Target className="w-6 h-6 text-midnight-crystal" />
             </div>
-            <h4 className="text-lg font-bold text-accent-silver mb-2">
+            <h4 className="text-lg font-bold text-midnight-silver mb-2">
               Objectifs
             </h4>
             <p className="text-night-200">
@@ -630,11 +693,11 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-background-card/50 backdrop-blur-sm border border-void rounded-xl p-6">
-            <div className="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center mb-4">
-              <Calendar className="w-6 h-6 text-success" />
+          <div className="bg-background-card/50 backdrop-blur-sm border border-midnight-blue/30 rounded-xl p-6 midnight-shadow">
+            <div className="w-12 h-12 rounded-lg bg-midnight-blue/20 flex items-center justify-center mb-4">
+              <Calendar className="w-6 h-6 text-midnight-crystal" />
             </div>
-            <h4 className="text-lg font-bold text-accent-silver mb-2">
+            <h4 className="text-lg font-bold text-midnight-silver mb-2">
               Planning
             </h4>
             <p className="text-night-200">
@@ -643,11 +706,11 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-background-card/50 backdrop-blur-sm border border-void rounded-xl p-6">
-            <div className="w-12 h-12 rounded-lg bg-accent-gold/20 flex items-center justify-center mb-4">
-              <Shield className="w-6 h-6 text-accent-gold" />
+          <div className="bg-background-card/50 backdrop-blur-sm border border-midnight-gold/30 rounded-xl p-6 midnight-shadow">
+            <div className="w-12 h-12 rounded-lg bg-midnight-gold/20 flex items-center justify-center mb-4">
+              <Shield className="w-6 h-6 text-midnight-gold" />
             </div>
-            <h4 className="text-lg font-bold text-accent-silver mb-2">
+            <h4 className="text-lg font-bold text-midnight-silver mb-2">
               Requis
             </h4>
             <p className="text-night-200">
@@ -658,18 +721,18 @@ export default function HomePage() {
 
           <a
             href="/roster"
-            className="bg-background-card/50 backdrop-blur-sm border border-void rounded-xl p-6 hover:border-primary/50 hover:shadow-void transition-all duration-300 group cursor-pointer"
+            className="bg-background-card/50 backdrop-blur-sm border border-midnight-purple/30 rounded-xl p-6 hover:border-midnight-crystal/50 hover:shadow-void transition-all duration-300 group cursor-pointer midnight-shadow"
           >
-            <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <Users className="w-6 h-6 text-purple-400" />
+            <div className="w-12 h-12 rounded-lg bg-midnight-purple/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <Users className="w-6 h-6 text-midnight-crystal" />
             </div>
-            <h4 className="text-lg font-bold text-accent-silver mb-2">
+            <h4 className="text-lg font-bold text-midnight-silver mb-2">
               Composition Raid
             </h4>
             <p className="text-night-200">
               Découvrez notre équipe de raid complète et nos membres actuels.
             </p>
-            <div className="mt-4 text-xs text-primary flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="mt-4 text-xs text-midnight-crystal flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
               Voir la composition →
             </div>
           </a>

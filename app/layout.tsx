@@ -15,9 +15,9 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Raid Always More - Recrutement Guilde WoW",
+  title: "Guild Always More - Guilde WoW Midnight",
   description:
-    "Formulaire de recrutement pour la guilde World of Warcraft Raid Always More",
+    "Guilde World of Warcraft spécialisée dans le raid Midnight. Recrutement actif pour progression NM/HM.",
 };
 
 export default function RootLayout({
@@ -35,23 +35,28 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${cinzel.variable} font-sans antialiased bg-background text-foreground min-h-screen overflow-x-hidden`}
       >
-        {/* Fond Void avec effets de particules */}
+        {/* Fond Midnight avec effets de particules */}
         <div className="fixed inset-0 -z-10">
-          <div className="absolute inset-0 bg-void-radial opacity-100"></div>
-          {/* Effets de particules */}
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)] opacity-5"></div>
-          {/* Lueurs */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-900/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-midnight-deep via-midnight-void to-midnight-purple opacity-100"></div>
+          {/* Effets de particules Midnight */}
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)] opacity-10"></div>
+          {/* Lueurs Midnight */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-midnight-purple/30 rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-midnight-blue/30 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+          {/* Étoiles filantes */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-1/3 left-0 w-1 h-1 bg-midnight-gold rounded-full animate-shooting-star"></div>
+            <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-midnight-gold rounded-full animate-shooting-star delay-2000"></div>
+          </div>
         </div>
 
         {/* Élément décoratif - Épée de guilde */}
         <div className="fixed top-4 right-4 z-20 hidden md:block">
           <div className="relative">
-            <div className="w-12 h-12 bg-gradient-to-br from-accent-gold to-accent-bronze rounded-lg rotate-45 animate-glow-pulse"></div>
+            <div className="w-12 h-12 bg-gradient-to-br from-midnight-gold to-midnight-bronze rounded-lg rotate-45 animate-glow-pulse"></div>
             <div className="absolute inset-0 flex items-center justify-center rotate-[-45deg]">
               <svg
-                className="w-6 h-6 text-void-dark"
+                className="w-6 h-6 text-midnight-dark"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -61,7 +66,7 @@ export default function RootLayout({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                 ></path>
               </svg>
             </div>
