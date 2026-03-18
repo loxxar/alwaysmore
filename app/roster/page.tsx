@@ -241,28 +241,28 @@ export default function RosterPage() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-4"
         >
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-primary/20 to-accent-gold/20 border border-void mb-6">
-            <Crown className="w-10 h-10 text-accent-gold" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent-gold/20 border border-void mb-3">
+            <Crown className="w-8 h-8 text-accent-gold" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-fantasy font-bold text-accent-gold mb-4">
+          <h1 className="text-3xl md:text-4xl font-fantasy font-bold text-accent-gold mb-2">
             Composition du Raid
           </h1>
-          <p className="text-xl text-night-200 max-w-3xl mx-auto">
+          <p className="text-lg text-night-200 max-w-2xl mx-auto">
             Découvrez les membres de la guilde{" "}
             <span className="text-primary font-semibold">
               Guild Always More
             </span>{" "}
             qui combattent dans les profondeurs de Midnight
           </p>
-          <div className="w-48 h-1 bg-gradient-to-r from-primary via-accent-gold to-primary rounded-full mx-auto mt-6"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-primary via-accent-gold to-primary rounded-full mx-auto mt-3"></div>
         </motion.div>
 
         {/* Chargement/Erreur */}
@@ -270,9 +270,9 @@ export default function RosterPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-12"
+            className="text-center py-6"
           >
-            <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+            <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-3"></div>
             <p className="text-night-200">
               Chargement de la composition du raid...
             </p>
@@ -299,7 +299,7 @@ export default function RosterPage() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
           >
             <motion.div
               variants={itemVariants}
@@ -377,7 +377,7 @@ export default function RosterPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 mb-12 shadow-void"
+            className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 mb-8 shadow-void"
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-center">
@@ -427,40 +427,40 @@ export default function RosterPage() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-12"
+            className="space-y-8"
           >
             {Object.entries(membersByRole).map(([role, members]) => (
               <motion.div key={role} variants={itemVariants}>
-                <div className="flex items-center mb-6">
+                <div className="flex items-center mb-4">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${getRoleColor(role).replace("text-", "bg-")}/20`}
                   >
                     {getRoleIcon(role)}
                   </div>
-                  <h2 className="text-2xl font-fantasy font-bold text-accent-gold">
+                  <h2 className="text-xl font-fantasy font-bold text-accent-gold">
                     {role}s{" "}
-                    <span className="text-night-300 text-lg">
+                    <span className="text-night-300 text-base">
                       ({members.length})
                     </span>
                   </h2>
                   <div className="ml-4 flex-1 h-px bg-gradient-to-r from-void via-primary/30 to-transparent"></div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {members.map((member) => (
                     <motion.div
                       key={member.id}
                       whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                      className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 shadow-void hover:shadow-void-xl transition-all duration-300"
+                      className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-4 shadow-void hover:shadow-void-xl transition-all duration-300"
                     >
-                      <div className="mb-4">
-                        <h3 className="text-xl font-bold text-accent-gold mb-2">
+                      <div className="mb-2">
+                        <h3 className="text-lg font-bold text-accent-gold mb-1">
                           {member.pseudo}
                         </h3>
                         <div className="text-sm text-night-300 mb-1">
                           {member.wowClass}
                         </div>
-                        <div className="flex items-center">
+                        <div className="flex items-center mt-1">
                           <div
                             className={`text-sm font-semibold ${getRoleColor(role)} flex items-center`}
                           >
@@ -482,10 +482,10 @@ export default function RosterPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-12"
+            className="text-center py-6"
           >
-            <Users className="w-16 h-16 text-night-400 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-accent-gold mb-2">
+            <Users className="w-12 h-12 text-night-400 mx-auto mb-3" />
+            <h3 className="text-xl font-bold text-accent-gold mb-1">
               Aucun membre accepté
             </h3>
             <p className="text-night-200">
@@ -499,13 +499,13 @@ export default function RosterPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="mt-16 text-center"
+          className="mt-8 text-center"
         >
-          <div className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-8 shadow-void">
-            <h3 className="text-2xl font-fantasy font-bold text-accent-gold mb-4">
+          <div className="bg-background-card/90 backdrop-blur-lg border border-void rounded-2xl p-6 shadow-void">
+            <h3 className="text-xl font-fantasy font-bold text-accent-gold mb-3">
               Rejoignez notre équipe
             </h3>
-            <p className="text-night-200 mb-6 max-w-2xl mx-auto">
+            <p className="text-night-200 mb-4 max-w-2xl mx-auto">
               Vous souhaitez combattre à nos côtés dans les raids de Midnight ?
               Postulez pour rejoindre la guilde.
             </p>
@@ -533,10 +533,10 @@ export default function RosterPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="mt-12 pt-8 border-t border-void/30"
+          className="mt-6 pt-6 border-t border-void/30"
         >
           <div className="text-center text-sm text-night-400">
-            <p className="mb-2">
+            <p className="mb-1">
               <Clock className="inline-block w-4 h-4 mr-2" />
               Raids : Mercredi & Vendredi • 20h30 - 23h30
             </p>
