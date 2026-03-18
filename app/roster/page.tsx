@@ -18,6 +18,9 @@ import {
   AlertCircle,
   Clock,
   Zap,
+  Skull,
+  Eye,
+  Gem,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -254,20 +257,26 @@ export default function RosterPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-4"
         >
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full midnight-portal mb-3">
-            <Crown className="w-8 h-8 text-midnight-gold animate-crystal-glow" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-[#1a0a1f] to-[#2d0a3a] border border-[#8b5cf6]/30 mb-3 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(139,92,246,0.3),rgba(217,119,6,0.2),transparent)] animate-[spin_10s_linear_infinite]"></div>
+            <Skull className="w-8 h-8 text-[#d97706] relative z-10" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-fantasy font-bold midnight-rune mb-2">
-            Composition du Raid Midnight
+          <h1 className="text-3xl md:text-4xl font-fantasy font-bold mb-2">
+            <span className="bg-gradient-to-r from-[#8b5cf6] via-[#d97706] to-[#8b5cf6] bg-clip-text text-transparent">
+              Armée du Vide
+            </span>
           </h1>
-          <p className="text-lg text-midnight-silver max-w-2xl mx-auto">
-            Découvrez les membres de la guilde{" "}
-            <span className="text-midnight-crystal font-semibold">
+          <p className="text-lg text-[#cbd5e1] max-w-2xl mx-auto">
+            Découvrez les serviteurs de{" "}
+            <span className="text-[#7dd3fc] font-semibold">
               Guild Always More
             </span>{" "}
-            qui combattent dans les profondeurs de Midnight
+            qui combattent sous le regard de Xal'atath
           </p>
-          <div className="w-32 h-1 bg-gradient-to-r from-midnight-purple via-midnight-gold to-midnight-crystal rounded-full mx-auto mt-3"></div>
+          <div className="relative w-32 h-1 mx-auto mt-3">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2d0a3a] via-[#8b5cf6] to-[#2d0a3a] rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d97706] to-transparent rounded-full animate-pulse"></div>
+          </div>
         </motion.div>
 
         {/* Chargement/Erreur */}
@@ -277,10 +286,8 @@ export default function RosterPage() {
             animate={{ opacity: 1 }}
             className="text-center py-6"
           >
-            <div className="inline-block w-12 h-12 border-4 border-midnight-crystal border-t-transparent rounded-full animate-spin mb-3"></div>
-            <p className="text-midnight-silver">
-              Chargement de la composition du raid Midnight...
-            </p>
+            <div className="inline-block w-12 h-12 border-4 border-[#8b5cf6] border-t-transparent rounded-full animate-spin mb-3"></div>
+            <p className="text-[#cbd5e1]">Le Vide observe votre patience...</p>
           </motion.div>
         )}
 
@@ -288,12 +295,14 @@ export default function RosterPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="bg-midnight-void/50 border border-midnight-purple/50 rounded-2xl p-6 mb-6 text-center midnight-shadow"
+            className="bg-gradient-to-br from-[#1a0a1f]/50 to-[#2d0a3a]/50 border border-[#8b5cf6]/50 rounded-2xl p-6 mb-6 text-center relative overflow-hidden"
           >
-            <AlertCircle className="w-10 h-10 text-midnight-crystal mx-auto mb-4" />
-            <p className="text-midnight-crystal mb-2">{error}</p>
-            <p className="text-midnight-silver text-sm">
-              Affichage des données de démonstration
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#8b5cf6] to-transparent"></div>
+            <div className="absolute bottom-0 right-0 w-1 h-full bg-gradient-to-t from-transparent via-[#d97706] to-transparent"></div>
+            <AlertCircle className="w-10 h-10 text-[#7dd3fc] mx-auto mb-4 relative z-10" />
+            <p className="text-[#7dd3fc] mb-2 relative z-10">{error}</p>
+            <p className="text-[#cbd5e1] text-sm relative z-10">
+              Le Néant montre ce qu'il veut bien montrer...
             </p>
           </motion.div>
         )}
@@ -308,70 +317,82 @@ export default function RosterPage() {
           >
             <motion.div
               variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-midnight-purple/30 rounded-2xl p-6 shadow-void midnight-shadow"
+              className="bg-gradient-to-br from-[#1a0a1f]/90 to-[#2d0a3a]/90 backdrop-blur-lg border border-[#8b5cf6]/30 rounded-2xl p-6 shadow-2xl shadow-[#8b5cf6]/20 relative overflow-hidden"
             >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#8b5cf6] to-transparent"></div>
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
-                  <Users className="w-6 h-6 text-midnight-deep" />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center mr-4 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(139,92,246,0.3),rgba(217,119,6,0.2),transparent)] animate-[spin_5s_linear_infinite]"></div>
+                  <Users className="w-6 h-6 text-[#cbd5e1] relative z-10" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-midnight-gold">
+                  <div className="text-3xl font-bold text-[#d97706]">
                     {stats.totalMembers}
                   </div>
-                  <div className="text-sm text-midnight-silver">
-                    Membres totaux
-                  </div>
+                  <div className="text-sm text-[#cbd5e1]">Âmes du Vide</div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-midnight-blue/30 rounded-2xl p-6 shadow-void midnight-shadow"
+              className="bg-gradient-to-br from-[#1a0a1f]/90 to-[#2d0a3a]/90 backdrop-blur-lg border border-[#7dd3fc]/30 rounded-2xl p-6 shadow-2xl shadow-[#7dd3fc]/20 relative overflow-hidden"
             >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#7dd3fc] to-transparent"></div>
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
-                  <Shield className="w-6 h-6 text-midnight-deep" />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#7dd3fc] to-[#0ea5e9] flex items-center justify-center mr-4 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(125,211,252,0.3),rgba(139,92,246,0.2),transparent)] animate-[spin_5s_linear_infinite]"></div>
+                  <Shield className="w-6 h-6 text-[#cbd5e1] relative z-10" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-midnight-crystal">
+                  <div className="text-3xl font-bold text-[#7dd3fc]">
                     {stats.tanksCount}
                   </div>
-                  <div className="text-sm text-midnight-silver">Tanks</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-midnight-purple/30 rounded-2xl p-6 shadow-void midnight-shadow"
-            >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
-                  <Heart className="w-6 h-6 text-midnight-deep" />
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-midnight-crystal">
-                    {stats.healsCount}
+                  <div className="text-sm text-[#cbd5e1]">
+                    Boucliers du Néant
                   </div>
-                  <div className="text-sm text-midnight-silver">Heals</div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-background-card/90 backdrop-blur-lg border border-midnight-gold/30 rounded-2xl p-6 shadow-void midnight-shadow"
+              className="bg-gradient-to-br from-[#1a0a1f]/90 to-[#2d0a3a]/90 backdrop-blur-lg border border-[#10b981]/30 rounded-2xl p-6 shadow-2xl shadow-[#10b981]/20 relative overflow-hidden"
             >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#10b981] to-transparent"></div>
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full midnight-crystal flex items-center justify-center mr-4">
-                  <Sword className="w-6 h-6 text-midnight-deep" />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center mr-4 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(16,185,129,0.3),rgba(217,119,6,0.2),transparent)] animate-[spin_5s_linear_infinite]"></div>
+                  <Heart className="w-6 h-6 text-[#cbd5e1] relative z-10" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-midnight-gold">
+                  <div className="text-3xl font-bold text-[#10b981]">
+                    {stats.healersCount}
+                  </div>
+                  <div className="text-sm text-[#cbd5e1]">
+                    Guérisseurs de l'Ombre
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-gradient-to-br from-[#1a0a1f]/90 to-[#2d0a3a]/90 backdrop-blur-lg border border-[#d97706]/30 rounded-2xl p-6 shadow-2xl shadow-[#d97706]/20 relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#d97706] to-transparent"></div>
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#d97706] to-[#b45309] flex items-center justify-center mr-4 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(217,119,6,0.3),rgba(139,92,246,0.2),transparent)] animate-[spin_5s_linear_infinite]"></div>
+                  <SwordsIcon className="w-6 h-6 text-[#cbd5e1] relative z-10" />
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-[#d97706]">
                     {stats.dpsCount}
                   </div>
-                  <div className="text-sm text-midnight-silver">DPS</div>
+                  <div className="text-sm text-[#cbd5e1]">
+                    Lames de la Corruption
+                  </div>
                 </div>
               </div>
             </motion.div>

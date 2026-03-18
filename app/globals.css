@@ -24,27 +24,27 @@
     --ring: 259 84% 65%;
     --radius: 0.5rem;
 
-    /* Couleurs WoW Midnight */
-    --void-dark: #0a0614;
-    --void-base: #1a0b2e;
-    --void-light: #2a1b4e;
+    /* Couleurs Xal'atath - Ténèbres du Vide */
+    --void-dark: #0a050f;
+    --void-base: #1a0a1f;
+    --void-light: #2d0a3a;
     --void-glow: #8b5cf6;
-    --night-blue: #0f172a;
-    --night-purple: #2e1065;
-    --accent-gold: #fbbf24;
-    --accent-silver: #e2e8f0;
-    --accent-bronze: #b45309;
+    --void-eye: #7dd3fc;
+    --void-corruption: #d97706;
+    --void-energy: #10b981;
+    --void-blood: #ef4444;
+    --void-shadow: #581c87;
 
-    /* Palette Midnight spécifique */
-    --midnight-deep: #0a0614;
-    --midnight-void: #1a0b2e;
-    --midnight-purple: #4c1d95;
-    --midnight-blue: #1e3a8a;
-    --midnight-gold: #d97706;
-    --midnight-bronze: #92400e;
-    --midnight-silver: #cbd5e1;
-    --midnight-crystal: #7dd3fc;
-    --midnight-shadow: #581c87;
+    /* Palette Xal'atath spécifique */
+    --xalath-dark: #0a050f;
+    --xalath-void: #1a0a1f;
+    --xalath-purple: #8b5cf6;
+    --xalath-blue: #1e3a8a;
+    --xalath-gold: #d97706;
+    --xalath-bronze: #92400e;
+    --xalath-silver: #cbd5e1;
+    --xalath-eye: #7dd3fc;
+    --xalath-shadow: #581c87;
 }
 
 @layer base {
@@ -56,10 +56,10 @@
         @apply bg-background text-foreground font-sans antialiased;
         background: linear-gradient(
             135deg,
-            var(--midnight-deep) 0%,
-            var(--midnight-void) 30%,
-            var(--midnight-purple) 60%,
-            var(--midnight-blue) 100%
+            var(--xalath-dark) 0%,
+            var(--xalath-void) 30%,
+            var(--void-glow) 60%,
+            var(--xalath-shadow) 100%
         );
         min-height: 100vh;
         overflow-x: hidden;
@@ -78,8 +78,8 @@
     ::-webkit-scrollbar-thumb {
         background: linear-gradient(
             180deg,
-            var(--primary) 0%,
-            var(--accent-gold) 100%
+            var(--void-glow) 0%,
+            var(--void-corruption) 100%
         );
         border-radius: 5px;
         border: 2px solid transparent;
@@ -89,14 +89,14 @@
     ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(
             180deg,
-            var(--void-glow) 0%,
-            var(--accent-gold) 100%
+            var(--void-eye) 0%,
+            var(--void-corruption) 100%
         );
     }
 
     /* Sélection de texte */
     ::selection {
-        background-color: rgba(124, 58, 237, 0.5);
+        background-color: rgba(139, 92, 246, 0.5);
         color: white;
     }
 
@@ -116,7 +116,7 @@
     textarea:focus,
     select:focus {
         @apply border-primary ring-2 ring-primary/20;
-        box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
     }
 
     /* Styles pour les boutons */
@@ -145,8 +145,8 @@
         bottom: -1px;
         background: linear-gradient(
             135deg,
-            rgba(124, 58, 237, 0.1),
-            rgba(251, 191, 36, 0.1)
+            rgba(139, 92, 246, 0.1),
+            rgba(217, 119, 6, 0.1)
         );
         border-radius: 0.75rem;
         z-index: -1;
@@ -160,17 +160,17 @@
 
     /* Effet de lueur violette */
     .glow-void {
-        box-shadow: 0 0 40px rgba(124, 58, 237, 0.4);
+        box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
     }
 
     .glow-gold {
-        box-shadow: 0 0 40px rgba(251, 191, 36, 0.4);
+        box-shadow: 0 0 40px rgba(217, 119, 6, 0.4);
     }
 
     /* Bouton principal */
     .btn-primary {
-        @apply bg-gradient-to-r from-primary to-primary-700 text-white font-bold py-3 px-6 rounded-lg
-           shadow-gold hover:shadow-void-xl transition-all duration-300
+        @apply bg-gradient-to-r from-[#8b5cf6] to-[#6d28d9] text-white font-bold py-3 px-6 rounded-lg
+           shadow-lg shadow-[#8b5cf6]/30 hover:shadow-xl hover:shadow-[#8b5cf6]/50 transition-all duration-300
            flex items-center justify-center gap-2;
         position: relative;
         overflow: hidden;
@@ -186,7 +186,7 @@
         background: linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.2),
+            rgba(139, 92, 246, 0.3),
             transparent
         );
         transition: left 0.7s;
@@ -221,8 +221,8 @@
     .text-gradient {
         background: linear-gradient(
             135deg,
-            var(--primary) 0%,
-            var(--accent-gold) 100%
+            var(--void-glow) 0%,
+            var(--void-corruption) 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -234,12 +234,12 @@
         background-image:
             radial-gradient(
                 circle at 25% 25%,
-                rgba(124, 58, 237, 0.1) 0%,
+                rgba(139, 92, 246, 0.1) 0%,
                 transparent 50%
             ),
             radial-gradient(
                 circle at 75% 75%,
-                rgba(251, 191, 36, 0.1) 0%,
+                rgba(217, 119, 6, 0.1) 0%,
                 transparent 50%
             );
         background-size: 400px 400px;
@@ -252,6 +252,7 @@
         background: radial-gradient(
             circle,
             var(--void-glow) 0%,
+            var(--void-eye) 50%,
             transparent 70%
         );
         pointer-events: none;
@@ -272,7 +273,8 @@
             from 0deg,
             transparent,
             var(--void-glow),
-            var(--accent-gold),
+            var(--void-corruption),
+            var(--void-eye),
             var(--void-glow),
             transparent
         );
@@ -286,7 +288,11 @@
 
     .progress-void-fill {
         @apply h-full rounded-full;
-        background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+        background: linear-gradient(
+            90deg,
+            var(--void-glow),
+            var(--void-corruption)
+        );
         background-size: 200% 100%;
         animation: shimmer 2s linear infinite;
     }
@@ -297,10 +303,10 @@
     @keyframes glow-pulse {
         0%,
         100% {
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
         }
         50% {
-            box-shadow: 0 0 40px rgba(124, 58, 237, 0.8);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
         }
     }
 
@@ -409,7 +415,7 @@
         background: linear-gradient(
             90deg,
             transparent,
-            var(--primary),
+            var(--void-glow),
             transparent
         );
         background-size: 200% 100%;
@@ -434,7 +440,7 @@
 
     /* Masques et effets */
     .mask-radial {
-        mask-image: radial-gradient(ellipse at center, white, transparent 70%);
+        mask-image: radial-gradient(ellipse at center, white, transparent 80%);
     }
 
     .mask-linear {
@@ -451,8 +457,8 @@
     .border-gradient {
         border: 2px solid transparent;
         background:
-            linear-gradient(var(--void-dark), var(--void-dark)) padding-box,
-            linear-gradient(135deg, var(--primary), var(--accent-gold))
+            linear-gradient(var(--xalath-dark), var(--xalath-dark)) padding-box,
+            linear-gradient(135deg, var(--void-glow), var(--void-corruption))
                 border-box;
     }
 
@@ -497,25 +503,25 @@
 }
 
 .admin-table th {
-    @apply bg-void/50 text-left py-4 px-6 text-sm font-medium text-night-200;
+    @apply bg-[#1a0a1f]/50 text-left py-4 px-6 text-sm font-medium text-[#cbd5e1];
 }
 
 .admin-table td {
-    @apply py-4 px-6 border-t border-void/30;
+    @apply py-4 px-6 border-t border-[#8b5cf6]/30;
 }
 
 .admin-table tr:hover {
-    @apply bg-void/20;
+    @apply bg-[#1a0a1f]/20;
 }
 
 /* Styles pour les modales */
 .modal-backdrop {
-    @apply fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm;
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm;
 }
 
 .modal-content {
-    @apply bg-background-card border border-void rounded-2xl shadow-void-xl
-         max-w-4xl w-full max-h-[90vh] overflow-y-auto;
+    @apply bg-gradient-to-br from-[#1a0a1f] to-[#2d0a3a] border border-[#8b5cf6]/30 rounded-2xl shadow-2xl shadow-[#8b5cf6]/20
+     max-w-4xl w-full max-h-[90vh] overflow-y-auto;
 }
 
 /* Styles pour les formulaires */
@@ -524,13 +530,13 @@
 }
 
 .form-label {
-    @apply block text-sm font-medium text-night-200 mb-2;
+    @apply block text-sm font-medium text-[#cbd5e1] mb-2;
 }
 
 .form-input {
-    @apply w-full px-4 py-3 bg-input-void border border-void rounded-lg
-         focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary
-         transition-all;
+    @apply w-full px-4 py-3 bg-[#1a0a1f] border border-[#8b5cf6]/30 rounded-lg
+     focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]/50 focus:border-[#8b5cf6]
+     transition-all;
 }
 
 .form-error {
@@ -539,7 +545,7 @@
 
 /* Loading spinner */
 .loading-spinner {
-    @apply w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin;
+    @apply w-8 h-8 border-4 border-[#8b5cf6] border-t-transparent rounded-full animate-spin;
 }
 
 /* Toast notifications */
@@ -561,9 +567,9 @@
     overflow: hidden;
     background: radial-gradient(
         circle at center,
-        var(--midnight-purple) 0%,
-        var(--midnight-void) 70%,
-        var(--midnight-deep) 100%
+        var(--void-glow) 0%,
+        var(--xalath-void) 70%,
+        var(--xalath-dark) 100%
     );
 }
 
@@ -574,9 +580,9 @@
     background: conic-gradient(
         from 0deg,
         transparent,
-        var(--midnight-crystal),
-        var(--midnight-gold),
-        var(--midnight-crystal),
+        var(--void-eye),
+        var(--void-corruption),
+        var(--void-glow),
         transparent
     );
     animation: rotate 20s linear infinite;
@@ -586,28 +592,28 @@
 .midnight-crystal {
     background: linear-gradient(
         135deg,
-        var(--midnight-crystal) 0%,
-        var(--midnight-silver) 50%,
-        var(--midnight-crystal) 100%
+        var(--void-eye) 0%,
+        var(--xalath-silver) 50%,
+        var(--void-glow) 100%
     );
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow:
-        0 0 30px rgba(125, 211, 252, 0.3),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
+        0 0 30px rgba(139, 92, 246, 0.3),
+        inset 0 0 20px rgba(125, 211, 252, 0.1);
 }
 
 .midnight-rune {
     background: linear-gradient(
         135deg,
-        var(--midnight-gold) 0%,
-        var(--midnight-bronze) 100%
+        var(--void-corruption) 0%,
+        var(--xalath-bronze) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-family: var(--font-serif);
     font-weight: 900;
-    text-shadow: 0 0 10px rgba(217, 119, 6, 0.3);
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 .midnight-shadow {
@@ -621,7 +627,7 @@
     background: radial-gradient(
         circle at center,
         transparent 30%,
-        var(--midnight-shadow) 100%
+        var(--xalath-shadow) 100%
     );
     opacity: 0.3;
     z-index: -1;

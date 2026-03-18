@@ -14,6 +14,7 @@ import {
   Star,
   Sparkles,
   Gem,
+  Eye,
 } from "lucide-react";
 
 // Données des classes et spécialisations WoW
@@ -52,14 +53,14 @@ const WOW_CLASSES = [
 ];
 
 // Éléments décoratifs Midnight
-const MIDNIGHT_ELEMENTS = [
-  { icon: Moon, color: "text-midnight-purple", label: "Lune de Midnight" },
-  { icon: Star, color: "text-midnight-gold", label: "Étoile du Vide" },
-  { icon: Gem, color: "text-midnight-crystal", label: "Cristal de l'Ombre" },
+const XALATATH_ELEMENTS = [
+  { icon: Skull, color: "text-[#8b5cf6]", label: "Crâne du Vide" },
+  { icon: Eye, color: "text-[#7dd3fc]", label: "Œil de Xal'atath" },
+  { icon: Sword, color: "text-[#d97706]", label: "Lame Corrompue" },
   {
-    icon: Sparkles,
-    color: "text-midnight-silver",
-    label: "Poussière d'Étoile",
+    icon: Zap,
+    color: "text-[#10b981]",
+    label: "Énergie du Néant",
   },
 ];
 
@@ -69,12 +70,16 @@ const RAID_OBJECTIVES = [
   { value: "mythic", label: "Mythique" },
 ];
 
-// Citations Midnight
-const MIDNIGHT_QUOTES = [
-  "Dans les profondeurs de Midnight, seuls les plus résolus survivent.",
-  "L'ombre s'étend, mais notre lumière brille plus fort.",
-  "Chaque cristal raconte l'histoire d'un héros tombé.",
-  "Le Vide murmure, mais nous répondons par le fracas des armes.",
+// Citations Xal'atath
+const XALATATH_QUOTES = [
+  "Le Vide observe... et attend.",
+  "Votre âme sera un ajout précieux à ma collection.",
+  "Dans les ténèbres, je vois tout. Dans le silence, j'entends tout.",
+  "La corruption est un cadeau, pas une malédiction.",
+  "Les faibles périssent, les forts servent le Vide.",
+  "Chaque battement de cœur est une promesse de pouvoir.",
+  "L'ancienne magie coule dans vos veines, je le sens.",
+  "Le Néant n'oublie pas, et il n'absout jamais.",
 ];
 
 const AVAILABILITIES = [
@@ -230,11 +235,24 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen py-8 px-4">
-      {/* Éléments décoratifs Midnight */}
+      {/* Éléments décoratifs Xal'atath */}
       <div className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-8 h-8 midnight-crystal rounded-full animate-midnight-float"></div>
-        <div className="absolute top-1/3 right-20 w-6 h-6 midnight-crystal rounded-full animate-midnight-float delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-10 h-10 midnight-crystal rounded-full animate-midnight-float delay-2000"></div>
+        {/* Yeux du Vide */}
+        <div className="absolute top-1/4 left-10 w-6 h-6">
+          <div className="w-full h-full bg-[radial-gradient(circle,rgba(139,92,246,0.3)_0%,transparent_70%)] rounded-full animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#8b5cf6] rounded-full"></div>
+        </div>
+        <div className="absolute top-1/3 right-20 w-8 h-8">
+          <div className="w-full h-full bg-[radial-gradient(circle,rgba(217,119,6,0.3)_0%,transparent_70%)] rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#d97706] rounded-full"></div>
+        </div>
+        <div className="absolute bottom-1/4 left-1/4 w-10 h-10">
+          <div className="w-full h-full bg-[radial-gradient(circle,rgba(139,92,246,0.4)_0%,transparent_70%)] rounded-full animate-pulse delay-2000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#7dd3fc] rounded-full"></div>
+        </div>
+        {/* Veines de corruption */}
+        <div className="absolute top-0 left-1/3 w-1 h-20 bg-gradient-to-b from-transparent via-[#8b5cf6] to-transparent animate-pulse delay-500"></div>
+        <div className="absolute bottom-0 right-1/4 w-1 h-24 bg-gradient-to-t from-transparent via-[#d97706] to-transparent animate-pulse delay-1500"></div>
       </div>
 
       <motion.div
@@ -245,12 +263,17 @@ export default function HomePage() {
       >
         {/* Titre et description */}
         <motion.div variants={itemVariants} className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full midnight-portal mb-6">
-            <Moon className="w-10 h-10 text-midnight-crystal animate-crystal-glow" />
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#1a0a1f] to-[#2d0a3a] border border-[#8b5cf6]/30 mb-6 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(139,92,246,0.3),rgba(217,119,6,0.2),transparent)] animate-[spin_10s_linear_infinite]"></div>
+            <Skull className="w-10 h-10 text-[#cbd5e1] relative z-10" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-fantasy font-bold midnight-rune mb-4">
-            <Sword className="inline-block w-8 h-8 mr-3 mb-1 text-midnight-gold" />
-            Rejoignez l'Élite de Midnight
+          <h2 className="text-3xl md:text-4xl font-fantasy font-bold mb-4">
+            <div className="inline-flex items-center">
+              <Sword className="inline-block w-8 h-8 mr-3 mb-1 text-[#d97706]" />
+              <span className="bg-gradient-to-r from-[#8b5cf6] via-[#d97706] to-[#8b5cf6] bg-clip-text text-transparent">
+                Rejoignez les Serviteurs du Vide
+              </span>
+            </div>
           </h2>
           <div className="max-w-2xl mx-auto mb-6">
             <p className="text-night-200 text-lg mb-4">
@@ -261,27 +284,39 @@ export default function HomePage() {
               du formulaire : les candidatures incomplètes ne pourront pas être
               étudiées.
             </p>
-            <div className="bg-midnight-void/50 border border-midnight-purple/30 rounded-xl p-4 mt-4">
-              <div className="flex items-center justify-center mb-2">
-                <Star className="w-4 h-4 text-midnight-gold mr-2" />
-                <p className="text-midnight-silver italic text-center">
-                  "Dans les profondeurs de Midnight, seuls les plus résolus
-                  survivent."
+            <div className="bg-gradient-to-r from-[#1a0a1f]/50 to-[#2d0a3a]/50 border border-[#8b5cf6]/30 rounded-xl p-4 mt-4 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#8b5cf6] to-transparent"></div>
+              <div className="absolute bottom-0 right-0 w-1 h-full bg-gradient-to-t from-transparent via-[#d97706] to-transparent"></div>
+              <div className="flex items-center justify-center mb-2 relative z-10">
+                <Eye className="w-4 h-4 text-[#7dd3fc] mr-2 animate-pulse" />
+                <p className="text-[#cbd5e1] italic text-center">
+                  "
+                  {
+                    XALATATH_QUOTES[
+                      Math.floor(Math.random() * XALATATH_QUOTES.length)
+                    ]
+                  }
+                  "
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Éléments Midnight */}
+          {/* Éléments Xal'atath */}
           <div className="flex justify-center space-x-6 mt-6">
-            {MIDNIGHT_ELEMENTS.map((element, index) => (
-              <div key={index} className="flex flex-col items-center">
+            {XALATATH_ELEMENTS.map((element, index) => (
+              <div key={index} className="flex flex-col items-center group">
                 <div
-                  className={`w-10 h-10 rounded-full bg-midnight-void/50 border border-midnight-purple/30 flex items-center justify-center mb-2 ${element.color}`}
+                  className={`w-12 h-12 rounded-full bg-gradient-to-br from-[#1a0a1f] to-[#2d0a3a] border border-[#8b5cf6]/30 flex items-center justify-center mb-2 relative overflow-hidden`}
                 >
-                  <element.icon className="w-5 h-5" />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br from-transparent via-${element.color.replace("text-[", "").replace("]", "")}/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                  ></div>
+                  <element.icon
+                    className={`w-6 h-6 relative z-10 ${element.color}`}
+                  />
                 </div>
-                <span className="text-xs text-midnight-silver">
+                <span className="text-xs text-[#cbd5e1] group-hover:text-[#d97706] transition-colors">
                   {element.label}
                 </span>
               </div>
@@ -292,24 +327,30 @@ export default function HomePage() {
         {/* Formulaire */}
         <motion.div
           variants={itemVariants}
-          className="bg-background-card/80 backdrop-blur-lg border border-void rounded-2xl shadow-void-xl p-6 md:p-8"
+          className="bg-gradient-to-br from-[#1a0a1f]/80 to-[#2d0a3a]/80 backdrop-blur-lg border border-[#8b5cf6]/30 rounded-2xl shadow-2xl shadow-[#8b5cf6]/20 p-6 md:p-8 relative overflow-hidden"
         >
+          {/* Effets de bordure Xal'atath */}
+          <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-transparent via-[#8b5cf6] to-transparent"></div>
+          <div className="absolute top-0 right-0 w-2 h-full bg-gradient-to-b from-transparent via-[#d97706] to-transparent"></div>
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#8b5cf6] to-transparent"></div>
+          <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#d97706] to-transparent"></div>
           {submitted ? (
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className="text-center py-12"
             >
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-success/20 to-primary/20 flex items-center justify-center">
-                <Zap className="w-10 h-10 text-success animate-pulse" />
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-[#10b981]/20 to-[#8b5cf6]/20 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,rgba(16,185,129,0.3),rgba(139,92,246,0.2),transparent)] animate-[spin_5s_linear_infinite]"></div>
+                <Zap className="w-10 h-10 text-[#10b981] animate-pulse relative z-10" />
               </div>
-              <h3 className="text-2xl font-bold text-success mb-3">
-                Candidature Envoyée !
+              <h3 className="text-2xl font-bold text-[#10b981] mb-3">
+                Candidature Acceptée par le Vide
               </h3>
-              <p className="text-night-200">
-                Merci {formData.pseudo} ! Votre candidature a été reçue.
+              <p className="text-[#cbd5e1]">
+                Merci {formData.pseudo} ! Votre âme a été enregistrée.
                 <br />
-                Nous reviendrons vers vous rapidement.
+                Xal'atath observe votre progression...
               </p>
             </motion.div>
           ) : (
@@ -317,16 +358,16 @@ export default function HomePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Section Informations Personnelles */}
                 <motion.div variants={itemVariants} className="md:col-span-2">
-                  <h3 className="text-xl font-bold text-accent-silver mb-4 flex items-center">
-                    <Users className="w-5 h-5 mr-2" />
-                    Informations Personnelles
+                  <h3 className="text-xl font-bold text-[#cbd5e1] mb-4 flex items-center">
+                    <Users className="w-5 h-5 mr-2 text-[#8b5cf6]" />
+                    Informations du Serviteur
                   </h3>
                 </motion.div>
 
                 {/* Pseudo */}
                 <motion.div variants={itemVariants}>
-                  <label className="block text-sm font-medium text-night-200 mb-2">
-                    Pseudo en jeu *
+                  <label className="block text-sm font-medium text-[#cbd5e1] mb-2">
+                    Nom du Serviteur *
                   </label>
                   <div className="relative">
                     <input
@@ -334,10 +375,12 @@ export default function HomePage() {
                       name="pseudo"
                       value={formData.pseudo}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 bg-input-void border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all ${
-                        errors.pseudo ? "border-destructive" : "border-void"
+                      className={`w-full px-4 py-3 bg-[#1a0a1f] border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]/50 focus:border-[#8b5cf6] transition-all ${
+                        errors.pseudo
+                          ? "border-[#ef4444]"
+                          : "border-[#8b5cf6]/30"
                       }`}
-                      placeholder="Votre pseudo WoW"
+                      placeholder="Le nom que porte votre âme"
                     />
                     {errors.pseudo && (
                       <p className="mt-1 text-sm text-destructive">
@@ -349,16 +392,18 @@ export default function HomePage() {
 
                 {/* Classe */}
                 <motion.div variants={itemVariants}>
-                  <label className="block text-sm font-medium text-night-200 mb-2">
-                    Classe *
+                  <label className="block text-sm font-medium text-[#cbd5e1] mb-2">
+                    Voie de Puissance *
                   </label>
                   <div className="relative">
                     <select
                       name="wowClass"
                       value={formData.wowClass}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 bg-input-void border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none ${
-                        errors.wowClass ? "border-destructive" : "border-void"
+                      className={`w-full px-4 py-3 bg-[#1a0a1f] border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]/50 focus:border-[#8b5cf6] transition-all appearance-none ${
+                        errors.wowClass
+                          ? "border-[#ef4444]"
+                          : "border-[#8b5cf6]/30"
                       }`}
                     >
                       <option value="">Sélectionnez une classe</option>
@@ -369,7 +414,7 @@ export default function HomePage() {
                       ))}
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <Shield className="w-5 h-5 text-night-400" />
+                      <Shield className="w-5 h-5 text-[#8b5cf6]" />
                     </div>
                     {errors.wowClass && (
                       <p className="mt-1 text-sm text-destructive">
@@ -381,8 +426,8 @@ export default function HomePage() {
 
                 {/* Spécialisation */}
                 <motion.div variants={itemVariants}>
-                  <label className="block text-sm font-medium text-night-200 mb-2">
-                    Spécialisation *
+                  <label className="block text-sm font-medium text-[#cbd5e1] mb-2">
+                    Art de la Corruption *
                   </label>
                   <div className="relative">
                     <select
@@ -390,14 +435,16 @@ export default function HomePage() {
                       value={formData.wowSpec}
                       onChange={handleInputChange}
                       disabled={!formData.wowClass}
-                      className={`w-full px-4 py-3 bg-input-void border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none ${
-                        errors.wowSpec ? "border-destructive" : "border-void"
+                      className={`w-full px-4 py-3 bg-[#1a0a1f] border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]/50 focus:border-[#8b5cf6] transition-all appearance-none ${
+                        errors.wowSpec
+                          ? "border-[#ef4444]"
+                          : "border-[#8b5cf6]/30"
                       } ${!formData.wowClass ? "opacity-50 cursor-not-allowed" : ""}`}
                     >
                       <option value="">
                         {formData.wowClass
-                          ? "Sélectionnez une spécialisation"
-                          : "Choisissez d'abord une classe"}
+                          ? "Choisissez votre art de la corruption"
+                          : "Choisissez d'abord une voie de puissance"}
                       </option>
                       {availableSpecs.map((spec) => (
                         <option key={spec} value={spec}>
@@ -418,8 +465,8 @@ export default function HomePage() {
 
                 {/* iLvl */}
                 <motion.div variants={itemVariants}>
-                  <label className="block text-sm font-medium text-night-200 mb-2">
-                    Niveau d'objet (iLvl) *
+                  <label className="block text-sm font-medium text-[#cbd5e1] mb-2">
+                    Puissance de l'Âme (iLvl) *
                   </label>
                   <input
                     type="number"
@@ -428,10 +475,10 @@ export default function HomePage() {
                     onChange={handleInputChange}
                     min="1"
                     max="1000"
-                    className={`w-full px-4 py-3 bg-input-void border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all ${
-                      errors.ilvl ? "border-destructive" : "border-void"
+                    className={`w-full px-4 py-3 bg-[#1a0a1f] border border-[#8b5cf6]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]/50 focus:border-[#8b5cf6] transition-all ${
+                      errors.ilvl ? "border-[#ef4444]" : "border-[#8b5cf6]/30"
                     }`}
-                    placeholder="Ex: 480"
+                    placeholder="Ex: 520 (la puissance de votre âme)"
                   />
                   {errors.ilvl && (
                     <p className="mt-1 text-sm text-destructive">
@@ -688,7 +735,7 @@ export default function HomePage() {
             <h4 className="text-lg font-bold text-midnight-silver mb-2">
               Objectifs
             </h4>
-            <p className="text-night-200">
+            <p className="text-[#cbd5e1]">
               Ambiance sérieuse mais détendue et entraide entre membres.
             </p>
           </div>

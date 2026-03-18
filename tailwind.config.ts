@@ -18,31 +18,36 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Palette WoW Midnight - Void Theme
+        // Palette Xal'atath - Ténèbres du Vide
         background: {
-          DEFAULT: "#0a0614",
-          secondary: "#1a0b2e",
-          card: "#1e0f35",
+          DEFAULT: "#0a050f",
+          secondary: "#1a0a1f",
+          card: "#2d0a3a",
         },
         primary: {
-          DEFAULT: "#7c3aed",
-          foreground: "#f3e8ff",
-          50: "#f5f3ff",
-          100: "#ede9fe",
-          200: "#ddd6fe",
-          300: "#c4b5fd",
-          400: "#a78bfa",
-          500: "#8b5cf6",
-          600: "#7c3aed",
-          700: "#6d28d9",
-          800: "#5b21b6",
-          900: "#4c1d95",
+          DEFAULT: "#8b5cf6",
+          foreground: "#f5f3ff",
+          50: "#faf5ff",
+          100: "#f3e8ff",
+          200: "#e9d5ff",
+          300: "#d8b4fe",
+          400: "#c084fc",
+          500: "#a855f7",
+          600: "#9333ea",
+          700: "#7e22ce",
+          800: "#6b21a8",
+          900: "#581c87",
         },
         void: {
-          DEFAULT: "#1a0b2e",
-          light: "#2a1b4e",
-          dark: "#0a0614",
+          DEFAULT: "#1a0a1f",
+          light: "#2d0a3a",
+          dark: "#0a050f",
           glow: "#8b5cf6",
+          eye: "#7dd3fc",
+          corruption: "#d97706",
+          energy: "#10b981",
+          blood: "#ef4444",
+          shadow: "#581c87",
         },
         night: {
           DEFAULT: "#0f172a",
@@ -60,21 +65,24 @@ const config: Config = {
           900: "#0f172a",
         },
         accent: {
-          gold: "#fbbf24",
-          silver: "#e2e8f0",
-          bronze: "#b45309",
+          gold: "#d97706",
+          silver: "#cbd5e1",
+          bronze: "#92400e",
+          eye: "#7dd3fc",
+          corruption: "#d97706",
+          energy: "#10b981",
         },
         border: {
           DEFAULT: "hsl(var(--border))",
-          void: "#4c1d95",
+          void: "#8b5cf6",
         },
         input: {
           DEFAULT: "hsl(var(--input))",
-          void: "#2e1065",
+          void: "#1a0a1f",
         },
         ring: {
           DEFAULT: "hsl(var(--ring))",
-          void: "#7c3aed",
+          void: "#8b5cf6",
         },
         foreground: {
           DEFAULT: "hsl(var(--foreground))",
@@ -111,11 +119,15 @@ const config: Config = {
       },
       backgroundImage: {
         "void-radial":
-          "radial-gradient(circle at 50% 50%, #1a0b2e 0%, #0a0614 70%)",
+          "radial-gradient(circle at 50% 50%, #1a0a1f 0%, #0a050f 70%)",
         "void-linear":
-          "linear-gradient(135deg, #1a0b2e 0%, #2e1065 50%, #0f172a 100%)",
-        "gold-gradient": "linear-gradient(135deg, #fbbf24 0%, #d97706 100%)",
-        "silver-gradient": "linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%)",
+          "linear-gradient(135deg, #1a0a1f 0%, #2d0a3a 50%, #0f172a 100%)",
+        "gold-gradient": "linear-gradient(135deg, #d97706 0%, #92400e 100%)",
+        "silver-gradient": "linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%)",
+        "xalath-gradient":
+          "linear-gradient(135deg, #8b5cf6 0%, #d97706 50%, #7dd3fc 100%)",
+        "corruption-gradient":
+          "linear-gradient(135deg, #1a0a1f 0%, #2d0a3a 50%, #581c87 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -129,6 +141,8 @@ const config: Config = {
         shimmer: "shimmer 2s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "corruption-pulse": "corruption-pulse 3s ease-in-out infinite",
+        "eye-glow": "eye-glow 4s ease-in-out infinite",
       },
       keyframes: {
         "void-pulse": {
@@ -136,8 +150,8 @@ const config: Config = {
           "50%": { opacity: "0.5" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(124, 58, 237, 0.5)" },
-          "50%": { boxShadow: "0 0 40px rgba(124, 58, 237, 0.8)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(139, 92, 246, 0.5)" },
+          "50%": { boxShadow: "0 0 40px rgba(139, 92, 246, 0.8)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
@@ -146,6 +160,26 @@ const config: Config = {
         shimmer: {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
+        },
+        "corruption-pulse": {
+          "0%, 100%": {
+            boxShadow: "0 0 15px rgba(217, 119, 6, 0.4)",
+            transform: "scale(1)",
+          },
+          "50%": {
+            boxShadow: "0 0 30px rgba(217, 119, 6, 0.7)",
+            transform: "scale(1.05)",
+          },
+        },
+        "eye-glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 10px rgba(125, 211, 252, 0.3)",
+            opacity: "0.7",
+          },
+          "50%": {
+            boxShadow: "0 0 25px rgba(125, 211, 252, 0.8)",
+            opacity: "1",
+          },
         },
         "accordion-down": {
           from: { height: "0" },
@@ -157,10 +191,14 @@ const config: Config = {
         },
       },
       boxShadow: {
-        void: "0 10px 40px rgba(124, 58, 237, 0.3)",
-        "void-lg": "0 20px 60px rgba(124, 58, 237, 0.4)",
-        "void-xl": "0 25px 80px rgba(124, 58, 237, 0.5)",
-        gold: "0 10px 40px rgba(251, 191, 36, 0.3)",
+        void: "0 10px 40px rgba(139, 92, 246, 0.3)",
+        "void-lg": "0 20px 60px rgba(139, 92, 246, 0.4)",
+        "void-xl": "0 25px 80px rgba(139, 92, 246, 0.5)",
+        gold: "0 10px 40px rgba(217, 119, 6, 0.3)",
+        corruption: "0 10px 40px rgba(217, 119, 6, 0.4)",
+        "corruption-lg": "0 20px 60px rgba(217, 119, 6, 0.5)",
+        eye: "0 10px 40px rgba(125, 211, 252, 0.3)",
+        "eye-lg": "0 20px 60px rgba(125, 211, 252, 0.4)",
       },
     },
   },

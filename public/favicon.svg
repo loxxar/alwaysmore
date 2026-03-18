@@ -1,58 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Gradients pour Xal'atath -->
+    <linearGradient id="bladeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a1f" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#2d0a3a" />
+    </linearGradient>
+
+    <radialGradient id="eyeGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </radialGradient>
+
+    <linearGradient id="corruptionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#92400e" />
+    </linearGradient>
+
+    <!-- Filtre de lueur -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
   <!-- Fond circulaire sombre -->
-  <circle cx="32" cy="32" r="30" fill="#1a0b2e" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="50" cy="50" r="45" fill="#0a050f" stroke="#1a0a1f" stroke-width="2" />
 
-  <!-- Épée stylisée -->
-  <g transform="translate(32, 32)">
-    <!-- Lame (gradient violet) -->
-    <defs>
-      <linearGradient id="bladeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#4c1d95" stop-opacity="0.9"/>
-      </linearGradient>
-      <linearGradient id="hiltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#fbbf24"/>
-        <stop offset="100%" stop-color="#b45309"/>
-      </linearGradient>
-      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.8"/>
-        <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
+  <!-- Lame de Xal'atath -->
+  <path d="M50,20 L60,50 L50,80 L40,50 Z" fill="url(#bladeGradient)" stroke="#8b5cf6" stroke-width="1.5" />
 
-    <!-- Lueur derrière l'épée -->
-    <circle cx="0" cy="0" r="22" fill="url(#glow)" opacity="0.7"/>
+  <!-- Garde de la dague -->
+  <circle cx="50" cy="50" r="8" fill="#2d0a3a" stroke="#8b5cf6" stroke-width="1.5" />
 
-    <!-- Lame principale -->
-    <path d="M -4,-18 L 4,-18 L 6,18 L -6,18 Z" fill="url(#bladeGradient)" stroke="#4c1d95" stroke-width="0.5"/>
+  <!-- Œil de Xal'atath -->
+  <circle cx="50" cy="50" r="4" fill="url(#eyeGradient)" filter="url(#glow)" />
 
-    <!-- Arête de la lame -->
-    <line x1="0" y1="-18" x2="0" y2="18" stroke="#fbbf24" stroke-width="0.8" stroke-opacity="0.6"/>
+  <!-- Veines de corruption -->
+  <path d="M50,30 Q55,35 50,40 Q45,45 50,50 Q55,55 50,60 Q45,65 50,70"
+        fill="none" stroke="url(#corruptionGradient)" stroke-width="1" stroke-linecap="round" opacity="0.7" />
 
-    <!-- Garde (croisée) -->
-    <rect x="-10" y="16" width="20" height="4" fill="url(#hiltGradient)" rx="1"/>
-    <rect x="-2" y="12" width="4" height="8" fill="url(#hiltGradient)"/>
+  <!-- Effets de particules -->
+  <circle cx="35" cy="35" r="1.5" fill="#8b5cf6" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="65" cy="65" r="1.5" fill="#d97706" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="65" cy="35" r="1.5" fill="#7dd3fc" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="35" cy="65" r="1.5" fill="#10b981" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.8s" repeatCount="indefinite" />
+  </circle>
 
-    <!-- Poignée -->
-    <rect x="-3" y="20" width="6" height="12" fill="url(#hiltGradient)" rx="1"/>
-
-    <!-- Pommeau -->
-    <circle cx="0" cy="28" r="5" fill="url(#hiltGradient)"/>
-    <circle cx="0" cy="28" r="2" fill="#7c3aed" opacity="0.8"/>
-
-    <!-- Éclats d'énergie (points brillants) -->
-    <circle cx="-8" cy="-10" r="1.2" fill="#fbbf24" opacity="0.8"/>
-    <circle cx="10" cy="-5" r="1" fill="#fbbf24" opacity="0.8"/>
-    <circle cx="5" cy="5" r="0.8" fill="#7c3aed" opacity="0.8"/>
-    <circle cx="-12" cy="0" r="1" fill="#7c3aed" opacity="0.8"/>
-
-    <!-- Effet de vide (cercle énergétique) -->
-    <circle cx="0" cy="0" r="18" fill="none" stroke="#7c3aed" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
-  </g>
-
-  <!-- Bordure extérieure énergétique -->
-  <circle cx="32" cy="32" r="31" fill="none" stroke="#7c3aed" stroke-width="0.5" stroke-dasharray="1,2" opacity="0.6"/>
-
-  <!-- Texte minimal (initiales) -->
-  <text x="32" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#fbbf24" opacity="0.7">RAM</text>
+  <!-- Bordure décorative -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#581c87" stroke-width="0.5" stroke-dasharray="3,2" opacity="0.5" />
 </svg>
