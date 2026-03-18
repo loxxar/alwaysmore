@@ -104,9 +104,18 @@ export default function RootLayout({
                 réservés
               </div>
               <div className="flex space-x-4">
-                <span className="text-sm text-night-300">
-                  Projet personnel
-                </span>
+                <a
+                  href="/"
+                  className="text-sm text-night-300 hover:text-accent-gold transition-colors"
+                >
+                  Accueil
+                </a>
+                <a
+                  href="/roster"
+                  className="text-sm text-night-300 hover:text-accent-gold transition-colors"
+                >
+                  Composition Raid
+                </a>
               </div>
             </div>
             <div className="mt-4 text-center text-xs text-night-400">

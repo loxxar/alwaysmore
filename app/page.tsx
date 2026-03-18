@@ -221,8 +221,8 @@ export default function HomePage() {
             Postulez pour rejoindre le raid Midnight. Les places seront limitées
             et une sélection sera faite à l'entrée, car nous ne pourrons
             malheureusement pas accueillir tout le monde. Merci de prendre le
-            temps de répondre sérieusement à toutes les questions du formulaire :
-            les candidatures incomplètes ne pourront pas être étudiées.
+            temps de répondre sérieusement à toutes les questions du formulaire
+            : les candidatures incomplètes ne pourront pas être étudiées.
           </p>
         </motion.div>
 
@@ -616,7 +616,7 @@ export default function HomePage() {
         {/* Section Informations Guilde */}
         <motion.div
           variants={itemVariants}
-          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6"
         >
           <div className="bg-background-card/50 backdrop-blur-sm border border-void rounded-xl p-6">
             <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
@@ -655,6 +655,24 @@ export default function HomePage() {
               durée.
             </p>
           </div>
+
+          <a
+            href="/roster"
+            className="bg-background-card/50 backdrop-blur-sm border border-void rounded-xl p-6 hover:border-primary/50 hover:shadow-void transition-all duration-300 group cursor-pointer"
+          >
+            <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <Users className="w-6 h-6 text-purple-400" />
+            </div>
+            <h4 className="text-lg font-bold text-accent-silver mb-2">
+              Composition Raid
+            </h4>
+            <p className="text-night-200">
+              Découvrez notre équipe de raid complète et nos membres actuels.
+            </p>
+            <div className="mt-4 text-xs text-primary flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+              Voir la composition →
+            </div>
+          </a>
         </motion.div>
       </motion.div>
     </div>
