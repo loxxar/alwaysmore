@@ -316,9 +316,6 @@ export default function RosterPage() {
                   <div className="text-sm text-night-300">Membres totaux</div>
                 </div>
               </div>
-              <div className="text-xs text-night-400">
-                Équipe complète pour le raid
-              </div>
             </motion.div>
 
             <motion.div
@@ -335,9 +332,6 @@ export default function RosterPage() {
                   </div>
                   <div className="text-sm text-night-300">Tanks</div>
                 </div>
-              </div>
-              <div className="text-xs text-night-400">
-                Protection de l'équipe
               </div>
             </motion.div>
 
@@ -356,7 +350,6 @@ export default function RosterPage() {
                   <div className="text-sm text-night-300">Heals</div>
                 </div>
               </div>
-              <div className="text-xs text-night-400">Soutien vital</div>
             </motion.div>
 
             <motion.div
@@ -374,7 +367,6 @@ export default function RosterPage() {
                   <div className="text-sm text-night-300">DPS</div>
                 </div>
               </div>
-              <div className="text-xs text-night-400">Force de frappe</div>
             </motion.div>
           </motion.div>
         )}
@@ -410,7 +402,7 @@ export default function RosterPage() {
                     Objectif Raid
                   </div>
                   <div className="text-2xl font-bold text-purple-400">
-                    Mythique
+                    NM/HM
                   </div>
                 </div>
               </div>
@@ -515,8 +507,7 @@ export default function RosterPage() {
             </h3>
             <p className="text-night-200 mb-6 max-w-2xl mx-auto">
               Vous souhaitez combattre à nos côtés dans les raids de Midnight ?
-              Postulez pour rejoindre la guilde et faites partie de notre
-              progression mythique.
+              Postulez pour rejoindre la guilde.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -551,7 +542,7 @@ export default function RosterPage() {
             </p>
             <p>
               <Zap className="inline-block w-4 h-4 mr-2" />
-              Progression actuelle : Midnight • En cours de progression mythique
+              Progression actuelle : Démarrage Midnight
             </p>
           </div>
         </motion.div>
