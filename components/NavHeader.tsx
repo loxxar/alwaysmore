@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "/a-propos", label: "À Propos" },
   { href: "/roster", label: "Roster" },
   { href: "/recrutement", label: "Recrutement" },
+  { href: "/officiers", label: "Officiers" },
 ];
 
 export default function NavHeader() {

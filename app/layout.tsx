@@ -112,6 +112,7 @@ export default function RootLayout({
                   { href: "/a-propos", label: "À Propos" },
                   { href: "/roster", label: "Roster" },
                   { href: "/recrutement", label: "Recrutement" },
+                  { href: "/officiers", label: "Officiers" },
                   {
                     href: "https://discord.gg/CDBrgjd4cH",
                     label: "Discord",
