@@ -7,22 +7,28 @@ import { Users, Calendar, Sword, Shield, Heart, ChevronRight, Star } from "lucid
 
 const GUILD_FEATURES = [
   {
-    icon: Calendar,
-    title: "Raids Réguliers",
-    description: "Mercredi & Vendredi, 20h30–23h30. Une organisation rigoureuse pour avancer efficacement.",
+    icon: Star,
+    title: "Top 0,1 %",
+    description: "Plusieurs joueurs de la guilde figurent parmi les meilleurs 0,1 % de leur spécialisation en Mythique+.",
+    color: "#c8912a",
+  },
+  {
+    icon: Sword,
+    title: "Mythique+ au quotidien",
+    description: "Keys poussées chaque soir, en guilde ou entre membres. De la +10 à la +30, tout le monde trouve son niveau.",
     color: "#c8912a",
   },
   {
     icon: Users,
     title: "Ambiance Soudée",
-    description: "Une guilde à taille humaine où tout le monde se connaît. Aucune place pour la toxicité.",
+    description: "375 membres actifs, une communauté soudée. Aucune place pour la toxicité, toujours une clé à rejoindre.",
     color: "#3d6b2f",
   },
   {
-    icon: Sword,
-    title: "Progression Sérieuse",
-    description: "Objectif NM & HM. On vient en étant préparé : logiciel de suivi, stratégies maîtrisées.",
-    color: "#c8912a",
+    icon: Calendar,
+    title: "Raids Réguliers",
+    description: "Mercredi & Vendredi, 20h30–23h30. Pour ceux qui veulent aussi tâter du contenu raid en bonne compagnie.",
+    color: "#3d6b2f",
   },
   {
     icon: Shield,
@@ -76,6 +82,47 @@ export default function HomePage() {
             position: "absolute", inset: 0,
             background: "radial-gradient(ellipse at 50% 30%, rgba(200,145,42,0.12) 0%, transparent 60%)"
           }} />
+
+          {/* Zul'jin — gauche */}
+          <div style={{
+            position: "absolute", left: 0, bottom: 0, top: 0,
+            width: "38%", overflow: "hidden",
+            maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
+          }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://warcraft.wiki.gg/images/Zul%27jin_HotS_Art_2.jpg"
+              alt="Zul'jin"
+              style={{
+                position: "absolute", right: 0, bottom: 0, height: "95%",
+                objectFit: "contain", objectPosition: "bottom right",
+                filter: "sepia(40%) hue-rotate(10deg) brightness(0.55) contrast(1.1)",
+                opacity: 0.7,
+              }}
+            />
+          </div>
+
+          {/* Bwonsamdi — droite */}
+          <div style={{
+            position: "absolute", right: 0, bottom: 0, top: 0,
+            width: "32%", overflow: "hidden",
+            maskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
+          }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://warcraft.wiki.gg/images/Bwonsamdi_BfA.jpg"
+              alt="Bwonsamdi"
+              style={{
+                position: "absolute", left: 0, bottom: 0, height: "90%",
+                objectFit: "contain", objectPosition: "bottom left",
+                filter: "sepia(50%) hue-rotate(5deg) brightness(0.45) contrast(1.2)",
+                opacity: 0.65,
+              }}
+            />
+          </div>
+
           {/* Lignes décoratives */}
           <div style={{
             position: "absolute", top: "20%", left: "5%", width: "200px", height: "1px",
@@ -147,7 +194,7 @@ export default function HomePage() {
             className="text-xl md:text-2xl font-fantasy mb-10"
             style={{ color: "#c9b580", maxWidth: "600px", margin: "0 auto 2.5rem" }}
           >
-            Guilde de raid World of Warcraft
+            Guilde Mythique+ — Horde — Dijal
           </motion.p>
 
           {/* CTA Buttons */}
@@ -168,18 +215,23 @@ export default function HomePage() {
           </motion.div>
 
           {/* Quick stats */}
-          {rosterCount !== null && rosterCount > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="mt-12 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm"
-              style={{ background: "rgba(200,145,42,0.08)", border: "1px solid rgba(200,145,42,0.2)", color: "#c9b580" }}
-            >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="mt-12 inline-flex items-center gap-4 flex-wrap justify-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm"
+              style={{ background: "rgba(200,145,42,0.08)", border: "1px solid rgba(200,145,42,0.2)", color: "#c9b580" }}>
               <Users className="w-4 h-4" style={{ color: "#c8912a" }} />
-              <span>{rosterCount} membres actifs</span>
-            </motion.div>
-          )}
+              <span>375 membres dans la guilde</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm"
+              style={{ background: "rgba(200,145,42,0.08)", border: "1px solid rgba(200,145,42,0.2)", color: "#c9b580" }}>
+              <Star className="w-4 h-4" style={{ color: "#c8912a" }} />
+              <span>Plusieurs top 0,1 % M+</span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -285,7 +337,7 @@ export default function HomePage() {
             <div className="card-zan rounded-lg overflow-hidden">
               <div className="px-6 py-4" style={{ borderBottom: "1px solid rgba(200,145,42,0.15)" }}>
                 <p className="text-sm" style={{ color: "#8a7a50" }}>
-                  Les raids ont lieu chaque semaine aux horaires suivants. La présence à l&apos;heure est attendue.
+                  En dehors du Mythique+, des raids sont organisés chaque semaine pour ceux qui le souhaitent.
                 </p>
               </div>
               {RAID_DAYS.map((day, i) => (
@@ -303,7 +355,7 @@ export default function HomePage() {
               ))}
               <div className="px-6 py-3" style={{ background: "rgba(200,145,42,0.04)", borderTop: "1px solid rgba(200,145,42,0.1)" }}>
                 <p className="text-xs text-center font-fantasy" style={{ color: "#5a4a30" }}>
-                  Objectif : Normal & Héroïque
+                  Les invitations sont lancées 15 min avant le pull
                 </p>
               </div>
             </div>

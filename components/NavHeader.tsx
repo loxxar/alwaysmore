@@ -41,7 +41,7 @@ export default function NavHeader() {
                 className="text-xs font-sans"
                 style={{ color: "#5a4a30", letterSpacing: "0.15em" }}
               >
-                GUILDE HORDE
+                GUILDE HORDE · DIJAL
               </span>
             </div>
           </Link>

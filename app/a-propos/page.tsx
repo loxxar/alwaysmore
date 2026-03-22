@@ -7,38 +7,38 @@ import { Calendar, Users, Target, Shield, Heart, Sword, ChevronRight } from "luc
 const VALUES = [
   {
     icon: Target,
-    title: "Progression",
-    description: "Nous venons en raid préparés. Boss étudiés, logiciels de logs consultés, talents et équipements optimisés.",
+    title: "Haut niveau M+",
+    description: "Plusieurs membres de la guilde figurent dans le top 0,1 % de leur spécialisation. La performance est une culture, pas une contrainte.",
   },
   {
     icon: Heart,
     title: "Bonne ambiance",
-    description: "Le jeu reste du jeu. On aime progresser mais sans se prendre la tête. La bienveillance prime sur la performance brute.",
+    description: "Le jeu reste du jeu. On aime pousser des keys mais sans toxicité. La bienveillance prime sur les chiffres.",
   },
   {
     icon: Shield,
     title: "Régularité",
-    description: "La présence régulière est la clé. On ne demande pas la lune, mais être là quand on dit qu'on y est.",
+    description: "Des runs de keys organisés chaque soir. Pas d'obligation, mais toujours quelqu'un en ligne pour monter.",
   },
   {
     icon: Users,
     title: "Collectif",
-    description: "Ici, pas d'ego surdimensionné. La progression se fait ensemble, et tout le monde compte dans l'équipe.",
+    description: "375 membres actifs, pas d'ego surdimensionné. La guilde grandit ensemble, et tout le monde peut progresser.",
   },
 ];
 
 const EXPECTATIONS = [
-  "Être présent aux raids sur lesquels tu t'es engagé(e)",
-  "Connaître son personnage et sa spécialisation",
-  "Étudier les stratégies de boss avant le raid",
-  "Avoir son équipement entretenu (gemmes, enchantements)",
-  "Communiquer en cas d'absence",
-  "Garder une attitude positive, même sur les soirs difficiles",
+  "Connaître son personnage et sa spécialisation sur le bout des doigts",
+  "Avoir son équipement entretenu (gemmes, enchantements, crafts à jour)",
+  "Être disponible et partant(e) pour pousser des keys en guilde",
+  "Respecter le timer — les dépasses de clé ça se travaille, pas ça s'excuse",
+  "Communiquer : signaler ses dispos, ses lacunes, ses objectifs",
+  "Garder une attitude positive, même quand la key dévisse",
 ];
 
 const RULES = [
   "Aucune discrimination ni harcèlement d'aucune sorte",
-  "Les loot sont distribués équitablement selon l'attendance et la performance",
+  "Pas de blame en cours de key — on débriefe après, calmement",
   "Tout litige se règle en message privé avec un officier",
   "Les décisions des officiers sont finales",
   "Le respect des autres membres est non négociable",
@@ -80,19 +80,67 @@ export default function AProposPage() {
           <div className="zan-divider mb-8">
             <h2 className="text-xl md:text-2xl section-title whitespace-nowrap px-4">Notre histoire</h2>
           </div>
-          <div className="card-zan rounded-lg p-6 md:p-8 space-y-4">
-            <p className="leading-relaxed" style={{ color: "#c9b580" }}>
-              Always More est une guilde Horde née de la volonté commune d&apos;un groupe de joueurs de progresser
-              sérieusement en raid, sans pour autant se prendre trop au sérieux. Le nom dit tout :
-              on veut toujours plus — plus de progression, plus de fun, plus de cohésion d&apos;équipe.
-            </p>
-            <p className="leading-relaxed" style={{ color: "#8a7a50" }}>
-              On n&apos;est pas une guilde semi-hardcore qui impose des heures de farm insensées. On est une guilde
-              qui sait ce qu&apos;elle veut : avancer à son rythme, dans une bonne ambiance, avec des gens fiables
-              et motivés. Si tu partages cette vision, tu es probablement au bon endroit.
-            </p>
+
+          {/* Bloc histoire avec Vol'jin en incrustation */}
+          <div className="relative">
+            {/* Vol'jin — portrait à gauche, fond */}
+            <div className="hidden md:block" style={{
+              position: "absolute", left: "-60px", top: "-20px", bottom: "-20px", width: "200px",
+              overflow: "hidden", pointerEvents: "none",
+              maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, transparent 100%)",
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://warcraft.wiki.gg/images/Vol%27jin_The_Judgment.jpg"
+                alt="Vol'jin"
+                style={{
+                  width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center",
+                  filter: "sepia(50%) hue-rotate(10deg) brightness(0.5) contrast(1.1)",
+                  opacity: 0.75,
+                }}
+              />
+            </div>
+
+            <div className="card-zan rounded-lg p-6 md:p-8 space-y-4">
+              <p className="leading-relaxed" style={{ color: "#c9b580" }}>
+                Always More est une guilde Horde née de la passion du Mythique+. Depuis notre création, on a rassemblé
+                375 membres qui partagent une même vision : progresser, toujours aller plus loin, sans jamais sacrifier
+                l&apos;ambiance. Le nom dit tout.
+              </p>
+              <p className="leading-relaxed" style={{ color: "#8a7a50" }}>
+                Chez nous, le Mythique+ est le cœur de l&apos;activité. Des keys sont poussées tous les soirs, à tous
+                les niveaux. Plusieurs membres de la guilde figurent dans le top 0,1 % de leur spécialisation —
+                preuve que performance et bonne humeur ne s&apos;excluent pas.
+              </p>
+              <p className="leading-relaxed" style={{ color: "#8a7a50" }}>
+                Des raids sont également organisés chaque semaine pour ceux qui veulent varier les plaisirs.
+                Mais si tu cherches avant tout une guilde où pousser du contenu en groupe, avec des gens fiables
+                et motivés, tu es au bon endroit.
+              </p>
+            </div>
           </div>
         </motion.section>
+
+        {/* Bloc Rastakhan — incrustation décorative entre histoire et valeurs */}
+        <div className="relative flex justify-end mb-4 -mt-8 pointer-events-none overflow-hidden" style={{ height: "120px" }}>
+          <div style={{
+            maskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
+          }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://warcraft.wiki.gg/images/King_Rastakhan.jpg"
+              alt="Rastakhan"
+              style={{
+                height: "160px", width: "auto", objectFit: "contain", objectPosition: "top",
+                filter: "sepia(40%) hue-rotate(15deg) brightness(0.55) contrast(1.15)",
+                opacity: 0.6,
+                transform: "translateY(-20px)",
+              }}
+            />
+          </div>
+        </div>
 
         {/* Valeurs */}
         <motion.section
@@ -135,16 +183,17 @@ export default function AProposPage() {
           className="mb-16"
         >
           <div className="zan-divider mb-8">
-            <h2 className="text-xl md:text-2xl section-title whitespace-nowrap px-4">Calendrier des raids</h2>
+            <h2 className="text-xl md:text-2xl section-title whitespace-nowrap px-4">Calendrier des activités</h2>
           </div>
           <div className="card-zan rounded-lg overflow-hidden">
-            <div className="grid sm:grid-cols-2">
+            <div className="grid sm:grid-cols-3">
               {[
-                { day: "Mercredi", hours: "20h30 – 23h30", note: "Progression principale" },
-                { day: "Vendredi", hours: "20h30 – 23h30", note: "Progression principale" },
+                { day: "Tous les soirs", hours: "À partir de 20h", note: "Keys Mythique+" },
+                { day: "Mercredi", hours: "20h30 – 23h30", note: "Raid guilde" },
+                { day: "Vendredi", hours: "20h30 – 23h30", note: "Raid guilde" },
               ].map((day, i) => (
                 <div key={i} className="p-6 flex items-center gap-4"
-                  style={{ borderRight: i === 0 ? "1px solid rgba(200,145,42,0.1)" : "none" }}>
+                  style={{ borderRight: i < 2 ? "1px solid rgba(200,145,42,0.1)" : "none" }}>
                   <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ background: "rgba(200,145,42,0.1)", border: "1px solid rgba(200,145,42,0.25)" }}>
                     <Calendar className="w-5 h-5" style={{ color: "#c8912a" }} />
@@ -159,7 +208,7 @@ export default function AProposPage() {
             </div>
             <div className="px-6 py-3" style={{ background: "rgba(200,145,42,0.03)", borderTop: "1px solid rgba(200,145,42,0.1)" }}>
               <p className="text-xs text-center" style={{ color: "#5a4a30" }}>
-                Objectif : Normal & Héroïque — Les invitations sont lancées 15 min avant le pull.
+                Les raids sont ouverts à tous les membres — les invitations partent 15 min avant le pull.
               </p>
             </div>
           </div>
