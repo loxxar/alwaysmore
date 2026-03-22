@@ -83,25 +83,8 @@ export default function HomePage() {
             background: "radial-gradient(ellipse at 50% 30%, rgba(200,145,42,0.12) 0%, transparent 60%)"
           }} />
 
-          {/* Troll Zandalari — gauche */}
-          <div style={{
-            position: "absolute", left: 0, bottom: 0, top: 0,
-            width: "40%", overflow: "hidden", pointerEvents: "none",
-            maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, transparent 100%)",
-          }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/troll-zandalari.webp"
-              alt="Troll Zandalari"
-              style={{
-                position: "absolute", right: 0, bottom: 0, height: "100%",
-                objectFit: "contain", objectPosition: "bottom right",
-              }}
-            />
-          </div>
 
-          {/* Orc Guerrier — droite */}
+{/* Orc Guerrier — droite */}
           <div style={{
             position: "absolute", right: 0, bottom: 0, top: 0,
             width: "40%", overflow: "hidden", pointerEvents: "none",
