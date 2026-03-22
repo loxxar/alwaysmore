@@ -39,8 +39,8 @@ const GUILD_FEATURES = [
 ];
 
 const RAID_DAYS = [
-  { day: "Mercredi", hours: "20h30 – 23h30", active: true },
-  { day: "Vendredi", hours: "20h30 – 23h30", active: true },
+  { day: "Mercredi", hours: "21h00 – 23h00", active: true },
+  { day: "Vendredi", hours: "21h00 – 23h00", active: true },
 ];
 
 const NEWS = [
