@@ -86,39 +86,35 @@ export default function HomePage() {
           {/* Troll Zandalari — gauche */}
           <div style={{
             position: "absolute", left: 0, bottom: 0, top: 0,
-            width: "42%", overflow: "hidden", pointerEvents: "none",
-            maskImage: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
+            width: "40%", overflow: "hidden", pointerEvents: "none",
+            maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, transparent 100%)",
           }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://warcraft.wiki.gg/images/Zul%27jin_HotS_Art_2.jpg"
+              src="/images/troll-zandalari.webp"
               alt="Troll Zandalari"
               style={{
                 position: "absolute", right: 0, bottom: 0, height: "100%",
                 objectFit: "contain", objectPosition: "bottom right",
-                filter: "sepia(20%) hue-rotate(10deg) brightness(0.85) contrast(1.05)",
-                opacity: 0.9,
               }}
             />
           </div>
 
-          {/* Troll Zandalari — droite */}
+          {/* Orc Guerrier — droite */}
           <div style={{
             position: "absolute", right: 0, bottom: 0, top: 0,
-            width: "42%", overflow: "hidden", pointerEvents: "none",
-            maskImage: "linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
+            width: "40%", overflow: "hidden", pointerEvents: "none",
+            maskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, transparent 100%)",
           }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://warcraft.wiki.gg/images/Bwonsamdi_BfA.jpg"
-              alt="Troll Zandalari"
+              src="/images/orc-warrior.png"
+              alt="Guerrier Horde"
               style={{
                 position: "absolute", left: 0, bottom: 0, height: "100%",
                 objectFit: "contain", objectPosition: "bottom left",
-                filter: "sepia(20%) hue-rotate(5deg) brightness(0.8) contrast(1.05)",
-                opacity: 0.85,
               }}
             />
           </div>
