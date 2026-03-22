@@ -83,42 +83,42 @@ export default function HomePage() {
             background: "radial-gradient(ellipse at 50% 30%, rgba(200,145,42,0.12) 0%, transparent 60%)"
           }} />
 
-          {/* Zul'jin — gauche */}
+          {/* Troll Zandalari — gauche */}
           <div style={{
             position: "absolute", left: 0, bottom: 0, top: 0,
-            width: "38%", overflow: "hidden", pointerEvents: "none",
-            maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
+            width: "42%", overflow: "hidden", pointerEvents: "none",
+            maskImage: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
           }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://warcraft.wiki.gg/images/Zul%27jin_HotS_Art_2.jpg"
-              alt="Zul'jin"
+              alt="Troll Zandalari"
               style={{
-                position: "absolute", right: 0, bottom: 0, height: "95%",
+                position: "absolute", right: 0, bottom: 0, height: "100%",
                 objectFit: "contain", objectPosition: "bottom right",
-                filter: "sepia(40%) hue-rotate(10deg) brightness(0.55) contrast(1.1)",
-                opacity: 0.7,
+                filter: "sepia(20%) hue-rotate(10deg) brightness(0.85) contrast(1.05)",
+                opacity: 0.9,
               }}
             />
           </div>
 
-          {/* Bwonsamdi — droite */}
+          {/* Troll Zandalari — droite */}
           <div style={{
             position: "absolute", right: 0, bottom: 0, top: 0,
-            width: "32%", overflow: "hidden", pointerEvents: "none",
-            maskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
+            width: "42%", overflow: "hidden", pointerEvents: "none",
+            maskImage: "linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
           }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://warcraft.wiki.gg/images/Bwonsamdi_BfA.jpg"
-              alt="Bwonsamdi"
+              alt="Troll Zandalari"
               style={{
-                position: "absolute", left: 0, bottom: 0, height: "90%",
+                position: "absolute", left: 0, bottom: 0, height: "100%",
                 objectFit: "contain", objectPosition: "bottom left",
-                filter: "sepia(50%) hue-rotate(5deg) brightness(0.45) contrast(1.2)",
-                opacity: 0.65,
+                filter: "sepia(20%) hue-rotate(5deg) brightness(0.8) contrast(1.05)",
+                opacity: 0.85,
               }}
             />
           </div>
