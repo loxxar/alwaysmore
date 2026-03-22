@@ -194,7 +194,7 @@ export default function HomePage() {
             className="text-xl md:text-2xl font-fantasy mb-10"
             style={{ color: "#c9b580", maxWidth: "600px", margin: "0 auto 2.5rem" }}
           >
-            Guilde Mythique+ — Horde — Dijal
+            Guilde Mythique+ — Horde — Hyjal
           </motion.p>
 
           {/* CTA Buttons */}
