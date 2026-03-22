@@ -34,44 +34,32 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.variable} ${cinzel.variable} font-sans antialiased min-h-screen overflow-x-hidden`}
-        style={{ background: "#0d1208", color: "#e8d5a0" }}
+        style={{ background: "#0e0c09", color: "#e8d5a0" }}
       >
         {/* Fond Zandalari — jungle sombre avec lueurs dorées */}
         <div className="fixed inset-0 -z-10 overflow-hidden">
+          {/* Fond noir chaud — base neutre, zéro vert */}
           <div
             className="absolute inset-0"
             style={{
-              background:
-                "radial-gradient(ellipse at 50% 0%, #1e2915 0%, #0d1208 55%, #060a04 100%)",
+              background: "#0e0c09",
             }}
           />
+          {/* Reflet doré subtil en haut */}
           <div
-            className="absolute top-0 left-0 w-64 h-64 rounded-full animate-loa-breathe"
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full"
             style={{
               background:
-                "radial-gradient(circle, rgba(200,145,42,0.12) 0%, transparent 70%)",
+                "radial-gradient(ellipse, rgba(200,145,42,0.08) 0%, transparent 70%)",
+              filter: "blur(40px)",
             }}
           />
+          {/* Ligne dorée de séparation nav */}
           <div
-            className="absolute top-0 right-0 w-64 h-64 rounded-full animate-loa-breathe"
+            className="absolute top-0 left-0 w-full h-px"
             style={{
               background:
-                "radial-gradient(circle, rgba(200,145,42,0.10) 0%, transparent 70%)",
-              animationDelay: "1.5s",
-            }}
-          />
-          <div
-            className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(61,107,47,0.08) 0%, transparent 70%)",
-            }}
-          />
-          <div
-            className="absolute top-0 left-0 w-full h-0.5"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgba(200,145,42,0.4), transparent)",
+                "linear-gradient(90deg, transparent, rgba(200,145,42,0.5), transparent)",
             }}
           />
         </div>
@@ -96,7 +84,7 @@ export default function RootLayout({
           className="relative z-10 mt-16"
           style={{
             borderTop: "1px solid rgba(200,145,42,0.2)",
-            background: "rgba(6,10,4,0.9)",
+            background: "rgba(10,8,5,0.95)",
           }}
         >
           <div className="container mx-auto px-4 py-8">

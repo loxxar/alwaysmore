@@ -3,24 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --background: 100 30% 5%;
+  --background: 25 15% 5%;
   --foreground: 45 55% 80%;
-  --card: 100 25% 9%;
+  --card: 25 12% 8%;
   --card-foreground: 45 55% 80%;
-  --popover: 100 25% 9%;
+  --popover: 25 12% 8%;
   --popover-foreground: 45 55% 80%;
   --primary: 35 65% 47%;
-  --primary-foreground: 100 30% 3%;
-  --secondary: 100 22% 13%;
+  --primary-foreground: 25 15% 5%;
+  --secondary: 25 10% 12%;
   --secondary-foreground: 45 40% 73%;
-  --muted: 100 22% 13%;
+  --muted: 25 10% 12%;
   --muted-foreground: 45 25% 50%;
   --accent: 35 65% 47%;
-  --accent-foreground: 100 30% 3%;
+  --accent-foreground: 25 15% 5%;
   --destructive: 0 63% 33%;
   --destructive-foreground: 45 55% 80%;
   --border: 35 50% 30%;
-  --input: 100 25% 9%;
+  --input: 25 12% 8%;
   --ring: 35 65% 47%;
   --radius: 0.375rem;
 
@@ -28,8 +28,8 @@
   --zan-gold: #c8912a;
   --zan-gold-bright: #e8b84b;
   --zan-gold-dark: #7a5c18;
-  --zan-dark: #0d1208;
-  --zan-stone: #192112;
+  --zan-dark: #0e0c09;
+  --zan-stone: #1a1610;
   --zan-parchment: #e8d5a0;
   --zan-bone: #c9b580;
   --zan-green: #3d6b2f;
@@ -43,7 +43,7 @@
 
   body {
     @apply antialiased;
-    background: #0d1208;
+    background: #0e0c09;
     color: #e8d5a0;
     font-family: var(--font-sans);
     min-height: 100vh;
@@ -121,7 +121,7 @@
 @layer components {
   /* Carte Zandalari */
   .card-zan {
-    background: linear-gradient(135deg, #1e2915 0%, #192112 100%);
+    background: linear-gradient(135deg, #1c1710 0%, #151210 100%);
     border: 1px solid rgba(200, 145, 42, 0.25);
     border-radius: 0.5rem;
     position: relative;
