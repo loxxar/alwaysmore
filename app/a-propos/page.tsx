@@ -85,8 +85,8 @@ export default function AProposPage() {
           <div className="relative">
             {/* Vol'jin — portrait à gauche, fond */}
             <div className="hidden md:block" style={{
-              position: "absolute", left: "-60px", top: "-20px", bottom: "-20px", width: "200px",
-              overflow: "hidden", pointerEvents: "none",
+              position: "absolute", left: "-20px", top: 0, bottom: 0, width: "140px",
+              overflow: "hidden", pointerEvents: "none", zIndex: 0,
               maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, transparent 100%)",
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 40%, transparent 100%)",
             }}>
@@ -102,7 +102,7 @@ export default function AProposPage() {
               />
             </div>
 
-            <div className="card-zan rounded-lg p-6 md:p-8 space-y-4">
+            <div className="card-zan rounded-lg p-6 md:p-8 space-y-4" style={{ position: "relative", zIndex: 1 }}>
               <p className="leading-relaxed" style={{ color: "#c9b580" }}>
                 Always More est une guilde Horde née de la passion du Mythique+. Depuis notre création, on a rassemblé
                 375 membres qui partagent une même vision : progresser, toujours aller plus loin, sans jamais sacrifier
@@ -122,25 +122,6 @@ export default function AProposPage() {
           </div>
         </motion.section>
 
-        {/* Bloc Rastakhan — incrustation décorative entre histoire et valeurs */}
-        <div className="relative flex justify-end mb-4 -mt-8 pointer-events-none overflow-hidden" style={{ height: "120px" }}>
-          <div style={{
-            maskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
-          }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://warcraft.wiki.gg/images/King_Rastakhan.jpg"
-              alt="Rastakhan"
-              style={{
-                height: "160px", width: "auto", objectFit: "contain", objectPosition: "top",
-                filter: "sepia(40%) hue-rotate(15deg) brightness(0.55) contrast(1.15)",
-                opacity: 0.6,
-                transform: "translateY(-20px)",
-              }}
-            />
-          </div>
-        </div>
 
         {/* Valeurs */}
         <motion.section
@@ -188,7 +169,7 @@ export default function AProposPage() {
           <div className="card-zan rounded-lg overflow-hidden">
             <div className="grid sm:grid-cols-3">
               {[
-                { day: "Tous les soirs", hours: "À partir de 20h", note: "Keys Mythique+" },
+                { day: "Tous les soirs", hours: "À partir de 18h", note: "Keys Mythique+" },
                 { day: "Mercredi", hours: "20h30 – 23h30", note: "Raid guilde" },
                 { day: "Vendredi", hours: "20h30 – 23h30", note: "Raid guilde" },
               ].map((day, i) => (

@@ -27,7 +27,7 @@ const GUILD_FEATURES = [
   {
     icon: Calendar,
     title: "Raids Réguliers",
-    description: "Mercredi & Vendredi, 20h30–23h30. Pour ceux qui veulent aussi tâter du contenu raid en bonne compagnie.",
+    description: "Mercredi & Vendredi, 21h – 23h. Pour ceux qui veulent aussi tâter du contenu raid en bonne compagnie.",
     color: "#3d6b2f",
   },
   {
@@ -86,7 +86,7 @@ export default function HomePage() {
           {/* Zul'jin — gauche */}
           <div style={{
             position: "absolute", left: 0, bottom: 0, top: 0,
-            width: "38%", overflow: "hidden",
+            width: "38%", overflow: "hidden", pointerEvents: "none",
             maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
           }}>
@@ -106,7 +106,7 @@ export default function HomePage() {
           {/* Bwonsamdi — droite */}
           <div style={{
             position: "absolute", right: 0, bottom: 0, top: 0,
-            width: "32%", overflow: "hidden",
+            width: "32%", overflow: "hidden", pointerEvents: "none",
             maskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.15) 30%, transparent 100%)",
           }}>
